@@ -266,7 +266,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-02-22 13:20:05">2018-07-09 12:43</time>
+        创建时间:<time class="date" title="更新时间: 2019-02-22 16:39:28">2018-07-09 12:43</time>
         
     </div>
     <div class="article-meta">
@@ -326,7 +326,7 @@ write_enable=YES
 </code></pre>
 <p>注意此时终端显示的信息，这些都是thinstation所支持的package</p>
 <p><strong>重点</strong>：对于CentOS环境，必须修改thinstation/ts/TS_ENV</p>
-<p><img src="https://img-blog.csdn.net/20180709122631443?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FhcnJvbl9ETA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p><img src="https://img-blog.csdn.net/20180709122631443?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FhcnJvbl9ETA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
 <p>找到PATH变量，修改为：<code>PATH=$PATH:/ts/bin:/sbin:/bin</code> (不修改此处，在运行./setup-chroot后会因为找不到相关命令而报错，可能影响后续的编译)</p>
 <p>初始化结束：按Q退出，按Q退出只是进入到了编译的环境，并不是退出编译</p>
 <p>退出的只是当前的页面，其实按Q之后进入编译环境并不是退出编译环境，而是显示着</p>
@@ -381,8 +381,8 @@ write_enable=YES
 <pre><code class="bash"> ~]# vim build      //不要忘记注释 package extensions 与 package extensions-x
  ~]# ./build        //不要加--allmodules,我们已经得到了modules.list了呀！
 </code></pre>
-<p><img src="https://img-blog.csdn.net/20180709124134151?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FhcnJvbl9ETA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
-<p><img src="https://img-blog.csdn.net/2018070912414457?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FhcnJvbl9ETA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p><img src="https://img-blog.csdn.net/20180709124134151?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FhcnJvbl9ETA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
+<p><img src="https://img-blog.csdn.net/2018070912414457?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FhcnJvbl9ETA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
 <p>如果你不通过/bin/hwlister.sh命令获取客户端主机驱动，我们需要知道那些模块是我们需要编译进去的，模块就是对应的驱动，在modules.list文件中定义。不要把不需要的模块编译进去，越多的模块启动所需的时间越长。</p>
 <h3 id="9-最后就是将编译完成的pxe目录下的所有内容拷贝到PXE服务器的tftp目录下"><a href="#9-最后就是将编译完成的pxe目录下的所有内容拷贝到PXE服务器的tftp目录下" class="headerlink" title="9.最后就是将编译完成的pxe目录下的所有内容拷贝到PXE服务器的tftp目录下"></a>9.最后就是将编译完成的pxe目录下的所有内容拷贝到PXE服务器的tftp目录下</h3><h3 id="10-瘦客户端就制作完成啦"><a href="#10-瘦客户端就制作完成啦" class="headerlink" title="10.瘦客户端就制作完成啦"></a>10.瘦客户端就制作完成啦</h3>
       
@@ -401,7 +401,7 @@ write_enable=YES
     
     <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
     <p><span>发布时间:</span>2018-07-09, 12:43:17</p>
-    <p><span>最后更新:</span>2019-02-22, 13:20:05</p>
+    <p><span>最后更新:</span>2019-02-22, 16:39:28</p>
     <span>原始链接:</span><a class="post-url" href="/2018-07-10-CentOS 7.0 环境编译thinstation/" title="CentOS 7.0 环境编译thinstation">http://johncaijun.github.io/2018-07-10-CentOS 7.0 环境编译thinstation/</a>
     <p>
         <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
