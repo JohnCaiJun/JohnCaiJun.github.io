@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>search | Cai Jun&#39;s blog</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="search | Cai Jun&#39;s blog">
+  <title>TIME_WAIT详解 | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" Tcp ">
+  <meta name="description" content="TIME_WAIT详解 | Cai Jun&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Personal web page">
 <meta name="keywords" content="caijun">
@@ -289,19 +289,31 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="search-" class="article article-type-search" itemscope="" itemprop="blogPost">
+        <article id="post-TIME-WAIT详解" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">search</h1>
+        <h1 class="article-title">TIME_WAIT详解</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+            <a href="javascript:" data-rel="网络">网络</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color4">Tcp</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-02-16 12:48:05">2019-02-22 14:46</time>
+        创建时间:<time class="date" title="更新时间: 2019-02-26 10:18:13">2019-02-26 22:58</time>
         
     </div>
     <div class="article-meta">
@@ -323,7 +335,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP建立连接"><span class="toc-text">TCP建立连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp断开连接"><span class="toc-text">tcp断开连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解TIME-WAIT"><span class="toc-text">理解TIME_WAIT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原因1-确保”主动关闭”端最后发出的-ACK-到达”被动关闭”端"><span class="toc-text">原因1: 确保”主动关闭”端最后发出的 ACK 到达”被动关闭”端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原因2-保证新tcp连接和老tcp连接不会干扰"><span class="toc-text">原因2: 保证新tcp连接和老tcp连接不会干扰</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -338,7 +350,33 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="TCP建立连接"><a href="#TCP建立连接" class="headerlink" title="TCP建立连接"></a>TCP建立连接</h2><ol>
+<li>Client: 向server发送 SYN 包，表示请求建立连接，进入 SYN_SENT 状态；</li>
+<li>Server: 接收来自client的 SYN 包，发送 SYN/ACK 包，代表client-&gt;server单向tcp连接已经建立， 进入 SYN_RCVD 状态；</li>
+<li>Client: 接收到来自server的 SYN/ACK 包，发送给server ACK 包，进入 Established 状态；</li>
+<li>Server: 收到client的 ACK 包，代表 server-&gt;client 的单向tcp连接也建立，此时进入 Established 状态；</li>
+</ol>
+<h2 id="tcp断开连接"><a href="#tcp断开连接" class="headerlink" title="tcp断开连接"></a>tcp断开连接</h2><ol>
+<li>client: 主动调用close()，发送 FIN 包，此时client就”主动关闭”端，进入 FIN_WAIT_1 状态；</li>
+<li>Server: server自然成为”被动关闭”端，收到来自client的 FIN 包，发送 ACK 包，代表client-&gt;server单向tcp连接已经关闭，进入 CLOSE_WAIT 状态；</li>
+<li>Client: 接收到来自server的 ACK 包，啥都不做，client-&gt;server单向的tcp连接已经断开，不能再发送应用层数据，进入 FIN_WAIT_2 状态；</li>
+<li>Server: server端给client端发送 FIN 包，代表准备关闭server-&gt;client的tcp连接，server进入LAST_ACK 状态；</li>
+<li>Client: 收到来自server的 FIN 包，发送 ACK 包，此时进入 TIME_WAIT 状态；</li>
+<li>Server: 收到Client的 ACK 包，就进入closed状态，Server端此次socket tcp连接完全端口；</li>
+<li>Client: 持续TIME_WAIT状态”一段时间”；</li>
+</ol>
+<h2 id="理解TIME-WAIT"><a href="#理解TIME-WAIT" class="headerlink" title="理解TIME_WAIT"></a>理解TIME_WAIT</h2><p>理解了上面的原理之后，接着就是正式介绍TIME_WAIT。TIME_WAIT的时间大多数情况下都是2倍的MSL（Maximum Segment Lifetime），MSL是一个数据包在网络上能生存的最长生命周期，一旦超过MSL的包就会被丢弃。</p>
+<p>从上面可以看到，TIME_WAIT是“主动关闭”端的最后一个状态，引入TIME_WAIT的原因有:</p>
+<ol>
+<li>确保”主动关闭”端最后发出的 ACK 到达”被动关闭”端</li>
+<li>保证新tcp连接和老tcp连接不会干扰</li>
+</ol>
+<h3 id="原因1-确保”主动关闭”端最后发出的-ACK-到达”被动关闭”端"><a href="#原因1-确保”主动关闭”端最后发出的-ACK-到达”被动关闭”端" class="headerlink" title="原因1: 确保”主动关闭”端最后发出的 ACK 到达”被动关闭”端"></a>原因1: 确保”主动关闭”端最后发出的 ACK 到达”被动关闭”端</h3><p>看上面tcp断开连接的图，由client主动调用close()，发出FIN包，然后接收到server的ACK/FIN包，客户端最后发一个FIN包，进入TIME_WAIT。</p>
+<p>设想一下，如果没有TIME_WAIT，client端发送最后的FIN包后里面关闭连接，如果由于网络原因，最后发出的FIN包没有顺利到达server(此时的server一直处于LAST_ACK状态等待最后FIN)，server长时间没有接收到FIN包，会认为之前由server发出的ACK/FIN包client没有收到，server会重新发送一个ACK/FIN包，这时候client收到ACK/FIN包，发现端口已经关闭，协议栈直接回复RST包，导致server端接收到RST包报错，影响应用进程。</p>
+<p>所以 TIME_WAIT 的作用可以保证最后的ACK包必然能到达对方，确保最后的连接正常端口。也解释了TIME_WAIT时间是2*MSL的原因。</p>
+<h3 id="原因2-保证新tcp连接和老tcp连接不会干扰"><a href="#原因2-保证新tcp连接和老tcp连接不会干扰" class="headerlink" title="原因2: 保证新tcp连接和老tcp连接不会干扰"></a>原因2: 保证新tcp连接和老tcp连接不会干扰</h3><p>End Point2发送FIN包后，没有进入TIME_WAIT状态，此时新的tcp请求又来了，而且src_ip，src_port，dst_ip，dst_port都是一样的，新的连接建立TCP请求后，老的连接包可能会干扰新连接的包，导致乱序。所以引入TIME_WAIT，2*MSL能让老连接的包彻底在网络中消失，保证新连接绝对干净。</p>
+<p><a href="http://www.firefoxbug.com/index.php/archives/2795/" target="_blank" rel="noopener">原文链接</a></p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
     </div>
@@ -349,6 +387,18 @@
     <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span>文章标题:</span>TIME_WAIT详解</p>
+    
+    <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
+    <p><span>发布时间:</span>2019-02-26, 22:58:18</p>
+    <p><span>最后更新:</span>2019-02-26, 10:18:13</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-02-27-TIME-WAIT详解/" title="TIME_WAIT详解">http://johncaijun.github.io/2019-02-27-TIME-WAIT详解/</a>
+    <p>
+        <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 

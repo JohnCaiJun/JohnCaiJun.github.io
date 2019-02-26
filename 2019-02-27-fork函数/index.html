@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>search | Cai Jun&#39;s blog</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="search | Cai Jun&#39;s blog">
+  <title>fork函数 | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" C ">
+  <meta name="description" content="fork函数 | Cai Jun&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Personal web page">
 <meta name="keywords" content="caijun">
@@ -289,19 +289,31 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="search-" class="article article-type-search" itemscope="" itemprop="blogPost">
+        <article id="post-fork函数" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">search</h1>
+        <h1 class="article-title">fork函数</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+            <a href="javascript:" data-rel="编程">编程</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color2">C</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-02-16 12:48:05">2019-02-22 14:46</time>
+        创建时间:<time class="date" title="更新时间: 2019-02-26 09:49:02">2019-02-26 22:40</time>
         
     </div>
     <div class="article-meta">
@@ -338,7 +350,70 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>fork函数是在&lt;unistd.h&gt;头文件中被定义，是系统的一个服务，</p>
+<p>其定义原型为  pid_t fork(void) ,其中pid_t是一个宏定义  #define pid_t int</p>
+<p>fork函数是在当前进程中创建一个新的进程，这个新的进程叫做子进程(child process)。当前进程称作父进程(parent process)。系统负责创建父进程的副本，包括代码段，堆和栈的复制。</p>
+<p>fork函数是“调用一次，返回两次”。即在父进程中返回生成子进程的ID，在子进程中返回一个整数0（因为子进程只有一个父进程，可以通过调用函数getppid()返回父进程的ID)</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+
+int main(int argc,char *argv[]){
+    //fork函数使用
+    int i = 0;
+    printf(&quot;before fork\n&quot;);
+    pid_t pid = fork();
+    printf(&quot;after fork\n&quot;);
+    if (pid &lt; 0){
+        printf(&quot;error\n&quot;);
+        return 1;
+    }
+    else if (pid == 0){
+        printf(&quot;fork success,this is son process\n&quot;);
+        printf(&quot;father&#39;s pid = %d\n&quot;, getpid());
+        while (i&lt;10){
+            i += 1;
+            printf(&quot;this is son process,i=%d\n&quot;,i);
+            sleep(1);
+        }
+    }
+    else{
+        printf(&quot;fork success,this is father process,son process id is %d \n&quot;,pid);
+        while (i&lt;10){
+            i += 2;
+            printf(&quot;this is father process,i=%d\n&quot;,i);
+            sleep(2);
+        }
+    }
+    return 0;
+}
+</code></pre>
+<p>运行结果</p>
+<pre><code class="bash">/Users/caijun/CLionProjects/CAccount/cmake-build-debug/CAccount
+before fork
+after fork
+fork success,this is father process,son process id is 16090 
+this is father process,i=2
+after fork
+fork success,this is son process
+father&#39;s pid = 16090
+this is son process,i=1
+this is son process,i=2
+this is son process,i=3
+this is father process,i=4
+this is son process,i=4
+this is son process,i=5
+this is father process,i=6
+this is son process,i=6
+this is son process,i=7
+this is father process,i=8
+this is son process,i=8
+this is son process,i=9
+this is father process,i=10
+this is son process,i=10
+
+Process finished with exit code 0
+</code></pre>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
     </div>
@@ -349,6 +424,18 @@
     <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span>文章标题:</span>fork函数</p>
+    
+    <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
+    <p><span>发布时间:</span>2019-02-26, 22:40:45</p>
+    <p><span>最后更新:</span>2019-02-26, 09:49:02</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-02-27-fork函数/" title="fork函数">http://johncaijun.github.io/2019-02-27-fork函数/</a>
+    <p>
+        <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 
