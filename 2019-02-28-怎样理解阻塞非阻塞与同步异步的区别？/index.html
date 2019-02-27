@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>Branch | Cai Jun&#39;s blog</title>
-  <meta name="keywords" content=" Git ">
-  <meta name="description" content="Branch | Cai Jun&#39;s blog">
+  <title>怎样理解阻塞非阻塞与同步异步的区别？ | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" C++ ">
+  <meta name="description" content="怎样理解阻塞非阻塞与同步异步的区别？ | Cai Jun&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Personal web page">
 <meta name="keywords" content="caijun">
@@ -294,9 +294,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Branch" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-怎样理解阻塞非阻塞与同步异步的区别？" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">Branch</h1>
+        <h1 class="article-title">怎样理解阻塞非阻塞与同步异步的区别？</h1>
     
     <div class="article-meta">
         
@@ -304,21 +304,21 @@
         
         <span class="book">
             
-            <a href="javascript:" data-rel="Git">Git</a>
+            <a href="javascript:" data-rel="编程">编程</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color4">Git</a>
+            <a href="javascript:" class="color4">C++</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-02-24 05:15:54">2019-02-24 14:59</time>
+        创建时间:<time class="date" title="更新时间: 2019-02-27 01:54:12">2019-02-27 14:42</time>
         
     </div>
     <div class="article-meta">
@@ -340,7 +340,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码管理之殇"><span class="toc-text">代码管理之殇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支命令"><span class="toc-text">分支命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目开发使用分支测试用例"><span class="toc-text">项目开发使用分支测试用例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于特性分支的开发"><span class="toc-text">基于特性分支的开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于发布分支的开发"><span class="toc-text">基于发布分支的开发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#发布分支的提交合并到主线"><span class="toc-text">发布分支的提交合并到主线</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支变基"><span class="toc-text">分支变基</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#阻塞与非阻塞"><span class="toc-text">阻塞与非阻塞</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -355,160 +355,16 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="代码管理之殇"><a href="#代码管理之殇" class="headerlink" title="代码管理之殇"></a>代码管理之殇</h2><p>分支是代码管理的利器。如果没有有效的分支管理，代码管理就适应不了复杂的开发过程和项目的需要。有前瞻性性的项目管理，新版本的开发往往是和当前版本同步进行的。如果两个版本的开发都混杂在master分支中，肯定会是一场灾难。</p>
-<p>分支类型主要分为：</p>
-<ol>
-<li>发布分支</li>
-<li>特性分支</li>
-<li>卖主分支</li>
-</ol>
-<p>google~</p>
-<h2 id="分支命令"><a href="#分支命令" class="headerlink" title="分支命令"></a>分支命令</h2><pre><code class="bash"># 查看分支
-git branch
-
-# 创建分支
-git branch &lt;branch-name&gt;
-git branch &lt;branch-name&gt; &lt;target-point&gt;
-
-# 删除分支
-git branch -d &lt;branch-name&gt;
-git branch -D &lt;branch-name&gt;
-
-
-# 重命名分支
-git branch -m &lt;old-branch&gt; &lt;new-branch&gt;
-git branch -M &lt;old-branch&gt; &lt;new-branch&gt;
-</code></pre>
-<h2 id="项目开发使用分支测试用例"><a href="#项目开发使用分支测试用例" class="headerlink" title="项目开发使用分支测试用例"></a>项目开发使用分支测试用例</h2><p>user1初始化项目。<br>user1添加getOpt()命令解析功能。<br>user2添加getScreen()获取屏幕数功能。</p>
-<h3 id="基于特性分支的开发"><a href="#基于特性分支的开发" class="headerlink" title="基于特性分支的开发"></a>基于特性分支的开发</h3><p>user1和user2应该为自己负责的功能创建特性分支。</p>
-<pre><code class="bash"># user1
-# （1）为“test-branch”项目创建里程碑v1.0
-git tag -m &quot;Release 1.0&quot; v1.0
-
-# （2）将新建的里程碑对宋到远程共享版本库
-git push origin refs/tags/v1.0
-
-# （3）创建分支user1/getopt，并切换到新分支上
-git branch user1/getopt
-git checkout user1/getopt
-(git checkout -b user1/getopt) #一个命令执行两个操作
-
-# 然后user1进行getOpt命令解析功能的开发........
-
-# user2
-# （1）首先将项目克隆到本地
-# （2）然后创建分支user2/getScreen分支
-# （3）在user2/getScreen分支进行开发.....
-
-# user1
-# （1）此时user1在user1/getopt分之下工作完成对getOpet功能的开发
-# （2）user1提交代码，完成开发任务
-# （3）此时查看user1/getopt分支和master分支的指向不同了
-git rev-parse user1/getopt master
-
-# （4）将user1/getopt分支合并到主线
-#       首先将工作区切换到主线
-git checkout master
-#       然后执行git merge命令合并user1/getopt分支。
-git merge user1/getopt
-#   实际上合并后master分支和user1/getopt指向同一个提交。
-# （5）此时查看状态信息显示本地master分支比远程共享版本库的master分支领先，是可以使用git cherry命令查看哪些提交领先（未被推送到上游跟踪分支中）
-git checkout master
-Switched to branch &#39;master&#39;
-Your branch is ahead of &#39;origin/master&#39; by 1 commit.
-  (use &quot;git push&quot; to publish your local commits)
-
-git cherry
-+ 5ea2fecbdb45d084c69bdb7a6a0b05c5d88e98c7
-# （6）执行推送操作，完成本地分支向远程分支的同步
-git push
-# （7）最后删除user1/getopt分支
-git branch -d user1/getopt
-
-</code></pre>
-<p>此时，由于user2的getScreen功能比较复杂，所以就先不等他了。</p>
-<h3 id="基于发布分支的开发"><a href="#基于发布分支的开发" class="headerlink" title="基于发布分支的开发"></a>基于发布分支的开发</h3><p>前提：v1.0版本中现在出现两个bug，需要修复。<br>于是将这两个bug分别交给user1和user2去完成。</p>
-<p>假如这两个bug分别是向README.txt文件添加aa,bb</p>
-<ul>
-<li>user1负责添加aa</li>
-<li>user2负责添加bb</li>
-</ul>
-<p>由于现在的版本库master分支相比v1.0发布时添加了新功能getOpt代码，如果基于master分支修改，就会引入尚未经过测试、可能不稳定的新功能的代码。</p>
-<p>所以，要想解决在1.0版本发现的bug，就需要<code>基于1.0发行版</code>的代码创建发布分支。</p>
-<pre><code class="bash"># user1
-# （1）创建发布分支
-git tag -n1 -1 v*
-git checkout -b test_git-1.X v1.0
-# （2）用git rev-parse命令显示对应的提交id（v1.0包含提交说明里程碑，所以对应的提交id为v1.0{}）
-git rev-parse test_git-1.x v1.0{} master
-# （3）user1将分支test_git-1.x推送到远程共享版本库（因为User2修改bug也要用到该分支）
-git push origin test_git-1.x
-
-# user2
-# （1）user2从共享版本库获取test_git-1.x分支
-git fetch
-# （2）远程分支不能直接检出，要基于该远程分支创建本地分支
-git rev-parse test_git-1.x v1.0{} master
-
-# user1
-# （1）添加aa
-# （2）提交并推送到远端共享仓库的发布分支test_git-1.x
-git push origin test_git-1.x
-
-# user2
-# （1）首先pull远端仓库test_git-1.x
-git pull origin test_git-1.x
-# （2）添加bb
-# （3）提交并推送到远端共享库的发布分支test_git-1.x
-git push origin test_git-1.x
-
-</code></pre>
-<h4 id="发布分支的提交合并到主线"><a href="#发布分支的提交合并到主线" class="headerlink" title="发布分支的提交合并到主线"></a>发布分支的提交合并到主线</h4><p>当user1和user2都相继在test_git-1.x分支中将像一个的Bug修改完后，就可以才能够test_git-1.x分支中编译新的软件产品交给客户使用了。</p>
-<blockquote>
-<p>不要忘了在主线master分支中也做出同样的更改，因为test_git-1.x分支中修改的bug同样也存在于主线master分支中</p>
-</blockquote>
-<pre><code class="bash"># 以user2的身份进行操作
-# （1）切换到master分支
-git checkout master
-# （2）从远程仓库同步master分支（此时会包含user1之前添加的getOpt命令解析的功能）
-git pull
-# （3）查看分支test_git-1.x的日志，确认要拣选的提交ID。从日志可以看出要拣选的提交分别是第一个父提交和第二个父提交，可以分别用test_git-1.x^1，test_git-1.x^2。
-git log -3 --graph --oneline test_git-1.x
-*   e604950 resolve conflic by user2
-|\
-| * 30f1b20 Fix bug by user1
-* | 29b84e8 Fix bug by user2
-|/
-# （4）执行拣选操作 （此时可能冲突，如遇冲突就处理冲突）
-git cherry-pick test_project-1.x^1
-git cherry-pick test_project-1.x^2
-# （5）查看状态可以看到当前的工作分支相对于远程服务器有两个新提交
-git status
-# （6）推送本地master分支到远端共享版本库
-</code></pre>
-<h3 id="分支变基"><a href="#分支变基" class="headerlink" title="分支变基"></a>分支变基</h3><blockquote>
-<p>可以采用merge的方式合并。</p>
-<blockquote>
-<p>利：开发者在user2/getScreen中的提交不会改变。<br>弊：会产生3个提交包括一个合并提交，增加了代码审核的负担。<br>所以很多项目在特性分支合并到开发主线的时候，都不推荐使用合并操作，而是使用变基操作。</p>
-</blockquote>
-</blockquote>
-<p>前提：此时user2继续完成getScreen功能</p>
-<pre><code class="bash"># user2
-# （1）切换到user2/getScreen分支
-# （2）添加getScreen功能
-# （3）提交
-# （4）推送分支user2/getScreen分支到远程服务器（主要是为了备份数据）
-git push origin user2/getScreen
-# （5）执行变基操作（此时遇到冲突的话...google~）
-git rebase master
-# （6）查看历史发现已经合并完成，将user2/getScreen分支直接推送到远端的master分支上
-git push origin user2/getScreen:master
-
-# （7）user1执行拉回操作，发现确实添加了getScreen功能
-# （8）现在特性分支user2/getScreen完成了使命可以删除了（不要忘了删除远程分支user2/getScreen）
-git branch -d user2/getScreen
-git push origin :user2/getScreen #删除远端user2/getScreen分支
-</code></pre>
+        <p><a href="https://www.zhihu.com/question/19732473/answer/20851256" target="_blank" rel="noopener">原文链接</a></p>
+<p>“阻塞”与”非阻塞”与”同步”与“异步”不能简单的从字面理解，提供一个从分布式系统角度的回答。</p>
+<p>##同步与异步<br>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)</p>
+<p>所谓同步，就是在发出一个<em>调用</em>时，在没有得到结果之前，该<em>调用</em>就不返回。但是一旦调用返回，就得到返回值了。</p>
+<p>换句话说，就是由<em>调用者</em>主动等待这个<em>调用</em>的结果。</p>
+<p>而异步则是相反，<em>调用</em>在发出之后，这个调用就直接返回了，所以没有返回结果。换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在<em>调用</em>发出后，<em>被调用者</em>通过状态、通知来通知调用者，或通过回调函数处理这个调用。</p>
+<p>典型的异步编程模型比如Node.js</p>
+<p>举个通俗的例子：你打电话问书店老板有没有《分布式系统》这本书，如果是同步通信机制，书店老板会说，你稍等，”我查一下”，然后开始查啊查，等查好了（可能是5秒，也可能是一天）告诉你结果（返回结果）。<br>而异步通信机制，书店老板直接告诉你我查一下啊，查好了打电话给你，然后直接挂电话了（不返回结果）。然后查好了，他会主动打电话给你。在这里老板通过“回电”这种方式来回调。</p>
+<h2 id="阻塞与非阻塞"><a href="#阻塞与非阻塞" class="headerlink" title="阻塞与非阻塞"></a>阻塞与非阻塞</h2><p>阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态.<br>阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。</p>
+<p>还是上面的例子，你打电话问书店老板有没有《分布式系统》这本书，你如果是阻塞式调用，你会一直把自己“挂起”，直到得到这本书有没有的结果，如果是非阻塞式调用，你不管老板有没有告诉你，你自己先一边去玩了， 当然你也要偶尔过几分钟check一下老板有没有返回结果。在这里阻塞与非阻塞与是否同步异步无关。跟老板通过什么方式回答你结果无关。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
@@ -522,12 +378,12 @@ git push origin :user2/getScreen #删除远端user2/getScreen分支
 
 
 <div class="article_copyright">
-    <p><span>文章标题:</span>Branch</p>
+    <p><span>文章标题:</span>怎样理解阻塞非阻塞与同步异步的区别？</p>
     
     <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
-    <p><span>发布时间:</span>2019-02-24, 14:59:00</p>
-    <p><span>最后更新:</span>2019-02-24, 05:15:54</p>
-    <span>原始链接:</span><a class="post-url" href="/2019-02-25-Branch/" title="Branch">http://johncaijun.github.io/2019-02-25-Branch/</a>
+    <p><span>发布时间:</span>2019-02-27, 14:42:15</p>
+    <p><span>最后更新:</span>2019-02-27, 01:54:12</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-02-28-怎样理解阻塞非阻塞与同步异步的区别？/" title="怎样理解阻塞非阻塞与同步异步的区别？">http://johncaijun.github.io/2019-02-28-怎样理解阻塞非阻塞与同步异步的区别？/</a>
     <p>
         <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
