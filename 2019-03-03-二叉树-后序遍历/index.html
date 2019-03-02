@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>category | Cai Jun&#39;s blog</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="category | Cai Jun&#39;s blog">
+  <title>二叉树-后序遍历 | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" 算法 ">
+  <meta name="description" content="二叉树-后序遍历 | Cai Jun&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Personal web page">
 <meta name="keywords" content="caijun">
@@ -309,19 +309,31 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="category-" class="article article-type-category" itemscope="" itemprop="blogPost">
+        <article id="post-二叉树-后序遍历" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">category</h1>
+        <h1 class="article-title">二叉树-后序遍历</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+            <a href="javascript:" data-rel="算法">算法</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color3">算法</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-02-16 12:48:05">2019-02-22 15:02</time>
+        创建时间:<time class="date" title="更新时间: 2019-03-02 04:13:23">2019-03-02 16:58</time>
         
     </div>
     <div class="article-meta">
@@ -343,7 +355,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#后序遍历"><span class="toc-text">后序遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#源码"><span class="toc-text">源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法分析"><span class="toc-text">算法分析</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -358,7 +370,55 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h2><h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><p>递归</p>
+<pre><code class="c">#include&lt;iostream&gt;
+#include&lt;stack&gt;
+#include&lt;queue&gt;
+//节点结构体
+struct Node{
+    int value;
+    Node * left;
+    Node * right;
+    Node(int value):value(value),left(NULL),right(NULL){}
+};
+
+//后序遍历递归实现
+void postOrder(Node *node){
+    if(node){
+        postOrder(node-&gt;left);
+        postOrder(node-&gt;right);
+        std::cout&lt;&lt;node-&gt;value;
+    }
+
+}
+//后序遍历非递归实现
+void preOrder1(Node *node){
+    std::stack&lt;Node *&gt; nstack;
+    Node* lastVisit = node;
+    nstack.push(node);
+    while(node != NULL || !nstack.empty()){
+        while(node!=NULL){
+            nstack.push(node);
+            node = node-&gt;left;
+        }
+        node = nstack.top();
+        if(node-&gt;right == NULL || node-&gt;right == lastVisit ){
+            cout &lt;&lt; node-&gt;value;
+            lastVisit = node;
+            node = NULL;
+        }else{
+            node = node-&gt;right;
+        }
+    }
+}
+
+</code></pre>
+<h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><p>信息</p>
+<ol>
+<li>递归遍历顺序： 左子树-&gt;右子树-&gt;根节点</li>
+<li>非递归：使用栈，并且将先前输出的节点标记一下，while循环：先遍历左子树压栈，然后每pop一个节点判断其右节点是否为空，是否等于lastVisit，如果是则将lastVist置为当前节点，将node置为空。如果不是，则将node指向右节点</li>
+</ol>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
     </div>
@@ -369,6 +429,18 @@
     <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span>文章标题:</span>二叉树-后序遍历</p>
+    
+    <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
+    <p><span>发布时间:</span>2019-03-02, 16:58:51</p>
+    <p><span>最后更新:</span>2019-03-02, 04:13:23</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-03-03-二叉树-后序遍历/" title="二叉树-后序遍历">http://johncaijun.github.io/2019-03-03-二叉树-后序遍历/</a>
+    <p>
+        <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 
