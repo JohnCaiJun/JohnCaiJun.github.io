@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>怎样理解阻塞非阻塞与同步异步的区别？ | Cai Jun&#39;s blog</title>
-  <meta name="keywords" content=" C++ ">
-  <meta name="description" content="怎样理解阻塞非阻塞与同步异步的区别？ | Cai Jun&#39;s blog">
+  <title>Docker Event State | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" Docker ">
+  <meta name="description" content="Docker Event State | Cai Jun&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Personal web page">
 <meta name="keywords" content="caijun">
@@ -327,9 +327,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-怎样理解阻塞非阻塞与同步异步的区别？" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-Docker-Event-State" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">怎样理解阻塞非阻塞与同步异步的区别？</h1>
+        <h1 class="article-title">Docker Event State</h1>
     
     <div class="article-meta">
         
@@ -337,21 +337,21 @@
         
         <span class="book">
             
-            <a href="javascript:" data-rel="编程">编程</a>
+            <a href="javascript:" data-rel="运维">运维</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color4">C++</a>
+            <a href="javascript:" class="color2">Docker</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-03-02 08:15:56">2019-02-27 14:42</time>
+        创建时间:<time class="date" title="更新时间: 2019-03-10 12:03:00">2019-03-09 19:02</time>
         
     </div>
     <div class="article-meta">
@@ -373,7 +373,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#同步与异步"><span class="toc-text">同步与异步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阻塞与非阻塞"><span class="toc-text">阻塞与非阻塞</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Event-State"><span class="toc-text">Docker Event State</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建容器"><span class="toc-text">创建容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#制作镜像"><span class="toc-text">制作镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基于容器制作"><span class="toc-text">基于容器制作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于镜像制作"><span class="toc-text">基于镜像制作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker网络"><span class="toc-text">Docker网络</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -388,16 +388,45 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://www.zhihu.com/question/19732473/answer/20851256" target="_blank" rel="noopener">原文链接</a></p>
-<p>“阻塞”与”非阻塞”与”同步”与“异步”不能简单的从字面理解，提供一个从分布式系统角度的回答。</p>
-<h2 id="同步与异步"><a href="#同步与异步" class="headerlink" title="同步与异步"></a>同步与异步</h2><p>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)</p>
-<p>所谓同步，就是在发出一个<em>调用</em>时，在没有得到结果之前，该<em>调用</em>就不返回。但是一旦调用返回，就得到返回值了。</p>
-<p>换句话说，就是由<em>调用者</em>主动等待这个<em>调用</em>的结果。</p>
-<p>而异步则是相反，<em>调用</em>在发出之后，这个调用就直接返回了，所以没有返回结果。换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在<em>调用</em>发出后，<em>被调用者</em>通过状态、通知来通知调用者，或通过回调函数处理这个调用。</p>
-<p>典型的异步编程模型比如Node.js</p>
-<p>举个通俗的例子：你打电话问书店老板有没有《分布式系统》这本书，如果是同步通信机制，书店老板会说，你稍等，”我查一下”，然后开始查啊查，等查好了（可能是5秒，也可能是一天）告诉你结果（返回结果）。<br>而异步通信机制，书店老板直接告诉你我查一下啊，查好了打电话给你，然后直接挂电话了（不返回结果）。然后查好了，他会主动打电话给你。在这里老板通过“回电”这种方式来回调。</p>
-<h2 id="阻塞与非阻塞"><a href="#阻塞与非阻塞" class="headerlink" title="阻塞与非阻塞"></a>阻塞与非阻塞</h2><p>阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态.<br>阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。</p>
-<p>还是上面的例子，你打电话问书店老板有没有《分布式系统》这本书，你如果是阻塞式调用，你会一直把自己“挂起”，直到得到这本书有没有的结果，如果是非阻塞式调用，你不管老板有没有告诉你，你自己先一边去玩了， 当然你也要偶尔过几分钟check一下老板有没有返回结果。在这里阻塞与非阻塞与是否同步异步无关。跟老板通过什么方式回答你结果无关。</p>
+        <h2 id="Docker-Event-State"><a href="#Docker-Event-State" class="headerlink" title="Docker Event State"></a>Docker Event State</h2><p><img src="../media/15521294687240.jpg" alt=""></p>
+<h3 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h3><p>基于“镜像文件”，镜像文件有默运行的程序。</p>
+<p>运行的容器内部必须有一个工作前台的运行的进程</p>
+<blockquote>
+<p>docker的容器通常仅为运行一个程序。如果想在容器内运行多个程序，一般需要提供一个管控程序，例如supervised。</p>
+</blockquote>
+<h3 id="制作镜像"><a href="#制作镜像" class="headerlink" title="制作镜像"></a>制作镜像</h3><p><img src="../media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-09%2022.34.04.png" alt=""></p>
+<h4 id="基于容器制作"><a href="#基于容器制作" class="headerlink" title="基于容器制作"></a>基于容器制作</h4><p>制作nginx的容器镜像，在容器中完成操作后制作</p>
+<pre><code class="bash">docker commit -a &quot;AUTHOR_NAME&quot; -C &#39;CMD [&quot;/usr/sbin/nginx&quot;]&#39; DOCKER_NAME  
+
+# 运行
+docker run --name DOCKER_NAME -d REPOSITORY:TAG
+</code></pre>
+<p>将镜像文件导出为tar文件</p>
+<pre><code class="bash">docker save -o /root/nginx-v0.1.0.tar INAME_ID
+
+#导入
+docker loader -i /root/nginx-v0.1.0.tar
+</code></pre>
+<h4 id="基于镜像制作"><a href="#基于镜像制作" class="headerlink" title="基于镜像制作"></a>基于镜像制作</h4><p>编辑一个Dockerfile，而后根据此文件制作</p>
+<pre><code class="bash">FROM repository:tag
+MAINTAINER author &lt;author@mail.com&gt;
+COPY dir1 dir2
+ADD http://host/resource /dir/
+VOLUME /data/html
+EXPOSE 80/tcp
+
+ENV var_key var_value
+ADD ${var_key} /dir/
+
+RUN command_1 \
+    &amp;&amp; command_2 \
+    &amp;&amp; command_3
+
+CMD [&quot;excute_command&quot;,&quot;param1&quot;,&quot;param2&quot;]
+
+ONBUILD (基于此镜像触发此命令)
+</code></pre>
+<h3 id="Docker网络"><a href="#Docker网络" class="headerlink" title="Docker网络"></a>Docker网络</h3><p><img src="../media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-10%2008.52.22.png" alt="four network container archetypes"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
@@ -411,12 +440,12 @@
 
 
 <div class="article_copyright">
-    <p><span>文章标题:</span>怎样理解阻塞非阻塞与同步异步的区别？</p>
+    <p><span>文章标题:</span>Docker Event State</p>
     
     <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
-    <p><span>发布时间:</span>2019-02-27, 14:42:15</p>
-    <p><span>最后更新:</span>2019-03-02, 08:15:56</p>
-    <span>原始链接:</span><a class="post-url" href="/2019-02-28-怎样理解阻塞非阻塞与同步异步的区别？/" title="怎样理解阻塞非阻塞与同步异步的区别？">http://johncaijun.github.io/2019-02-28-怎样理解阻塞非阻塞与同步异步的区别？/</a>
+    <p><span>发布时间:</span>2019-03-09, 19:02:51</p>
+    <p><span>最后更新:</span>2019-03-10, 12:03:00</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-03-10-Docker-Event-State/" title="Docker Event State">http://johncaijun.github.io/2019-03-10-Docker-Event-State/</a>
     <p>
         <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
