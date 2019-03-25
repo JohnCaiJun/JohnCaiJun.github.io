@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>快速排序 | Cai Jun&#39;s blog</title>
-  <meta name="keywords" content=" 算法 ">
-  <meta name="description" content="快速排序 | Cai Jun&#39;s blog">
+  <title>十进制转二进制快速算法 | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" C++ ">
+  <meta name="description" content="十进制转二进制快速算法 | Cai Jun&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Personal web page">
 <meta name="keywords" content="caijun">
@@ -350,9 +350,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-快速排序" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-十进制转二进制快速算法" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">快速排序</h1>
+        <h1 class="article-title">十进制转二进制快速算法</h1>
     
     <div class="article-meta">
         
@@ -367,14 +367,14 @@
         
         <span class="tag">
             
-            <a href="javascript:" class="color3">算法</a>
+            <a href="javascript:" class="color4">C++</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-02-27 02:33:06">2019-02-27 15:28</time>
+        创建时间:<time class="date" title="更新时间: 2019-03-25 00:16:17">2019-03-21 19:10</time>
         
     </div>
     <div class="article-meta">
@@ -396,7 +396,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#权重"><span class="toc-text">权重</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移位"><span class="toc-text">移位</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -411,65 +411,15 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://blog.csdn.net/kenden23/article/details/14643823" target="_blank" rel="noopener">原文链接</a></p>
-<pre><code class="c++"># 选取枢纽元
-int partition(vector&lt;int&gt; &amp;vi, int low, int up)
-{
-    int pivot = vi[up];
-    int i = low-1;
-    for (int j = low; j &lt; up; j++)
-    {
-        if(vi[j] &lt;= pivot)
-        {
-            i++;
-            swap(vi[i], vi[j]);
-        }
-    }
-    swap(vi[i+1], vi[up]);
-    return i+1;
-}
-
-# 递归
-void quickSort(vector&lt;int&gt; &amp;vi, int low, int up)
-{
-    if(low &lt; up)
-    {
-        int mid = partition(vi, low, up);
-        //Watch out! The mid position is on the place, so we don&#39;t need to consider it again.
-        //That&#39;s why below is mid-1, not mid! Otherwise it will occur overflow error!!!
-        quickSort(vi, low, mid-1);
-        quickSort(vi, mid+1, up);
-    }
-}
-
-# 适配器
-void qSort(vector&lt;int&gt; &amp;vi)
-{
-    quickSort(vi, 0, vi.size()-1);
-}
-
-# 主函数
-int main()
-{
-    int a[] = {3,5,7,9,2,3,1,0,7,5,4};
-    vector&lt;int&gt; va(a, a+11);
-
-    cout&lt;&lt;&quot;Before quicksort:\n&quot;;
-    for(auto x:va)
-        cout&lt;&lt;x&lt;&lt;&quot; &quot;;
-    cout&lt;&lt;endl;
-
-    qSort(va);
-
-    cout&lt;&lt;&quot;After quicksort:\n&quot;;
-    for(auto x:va)
-        cout&lt;&lt;x&lt;&lt;&quot; &quot;;
-    cout&lt;&lt;endl;
-    system(&quot;pause&quot;);
-    return 0;
-}
-
-</code></pre>
+        <h2 id="权重"><a href="#权重" class="headerlink" title="权重"></a>权重</h2><p>十进制</p>
+<p>65 = 2^6+ 2^0</p>
+<p>对应二进制</p>
+<p>从右至左：1000001</p>
+<h2 id="移位"><a href="#移位" class="headerlink" title="移位"></a>移位</h2><p>10（十进制） = 1010（二进制）</p>
+<p>10左移2位：</p>
+<p>10 &lt;&lt; 2</p>
+<p>由于每个位置上的值都是右边一位的2倍，所以10左移2位相当于扩大了2^2 </p>
+<p>所以： 10 &lt;&lt; 2 = 10*2^2 = 40**  </p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
@@ -483,12 +433,12 @@ int main()
 
 
 <div class="article_copyright">
-    <p><span>文章标题:</span>快速排序</p>
+    <p><span>文章标题:</span>十进制转二进制快速算法</p>
     
     <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
-    <p><span>发布时间:</span>2019-02-27, 15:28:59</p>
-    <p><span>最后更新:</span>2019-02-27, 02:33:06</p>
-    <span>原始链接:</span><a class="post-url" href="/2019-02-28-快速排序/" title="快速排序">http://johncaijun.github.io/2019-02-28-快速排序/</a>
+    <p><span>发布时间:</span>2019-03-21, 19:10:36</p>
+    <p><span>最后更新:</span>2019-03-25, 00:16:17</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-03-22-十进制转二进制快速算法/" title="十进制转二进制快速算法">http://johncaijun.github.io/2019-03-22-十进制转二进制快速算法/</a>
     <p>
         <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
