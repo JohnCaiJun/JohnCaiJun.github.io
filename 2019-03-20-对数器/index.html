@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>怎样理解阻塞非阻塞与同步异步的区别？ | Cai Jun&#39;s blog</title>
-  <meta name="keywords" content=" C++ ">
-  <meta name="description" content="怎样理解阻塞非阻塞与同步异步的区别？ | Cai Jun&#39;s blog">
+  <title>对数器 | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" 算法 ">
+  <meta name="description" content="对数器 | Cai Jun&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Personal web page">
 <meta name="keywords" content="caijun">
@@ -366,9 +366,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-怎样理解阻塞非阻塞与同步异步的区别？" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-对数器" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">怎样理解阻塞非阻塞与同步异步的区别？</h1>
+        <h1 class="article-title">对数器</h1>
     
     <div class="article-meta">
         
@@ -376,21 +376,21 @@
         
         <span class="book">
             
-            <a href="javascript:" data-rel="编程">编程</a>
+            <a href="javascript:" data-rel="算法">算法</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color4">C++</a>
+            <a href="javascript:" class="color3">算法</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-03-02 08:15:56">2019-02-27 14:42</time>
+        创建时间:<time class="date" title="更新时间: 2019-04-02 02:23:48">2019-03-19 16:30</time>
         
     </div>
     <div class="article-meta">
@@ -412,7 +412,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#同步与异步"><span class="toc-text">同步与异步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阻塞与非阻塞"><span class="toc-text">阻塞与非阻塞</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#对数器的概念和使用"><span class="toc-text">对数器的概念和使用</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -427,16 +427,91 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://www.zhihu.com/question/19732473/answer/20851256" target="_blank" rel="noopener">原文链接</a></p>
-<p>“阻塞”与”非阻塞”与”同步”与“异步”不能简单的从字面理解，提供一个从分布式系统角度的回答。</p>
-<h2 id="同步与异步"><a href="#同步与异步" class="headerlink" title="同步与异步"></a>同步与异步</h2><p>同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)</p>
-<p>所谓同步，就是在发出一个<em>调用</em>时，在没有得到结果之前，该<em>调用</em>就不返回。但是一旦调用返回，就得到返回值了。</p>
-<p>换句话说，就是由<em>调用者</em>主动等待这个<em>调用</em>的结果。</p>
-<p>而异步则是相反，<em>调用</em>在发出之后，这个调用就直接返回了，所以没有返回结果。换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在<em>调用</em>发出后，<em>被调用者</em>通过状态、通知来通知调用者，或通过回调函数处理这个调用。</p>
-<p>典型的异步编程模型比如Node.js</p>
-<p>举个通俗的例子：你打电话问书店老板有没有《分布式系统》这本书，如果是同步通信机制，书店老板会说，你稍等，”我查一下”，然后开始查啊查，等查好了（可能是5秒，也可能是一天）告诉你结果（返回结果）。<br>而异步通信机制，书店老板直接告诉你我查一下啊，查好了打电话给你，然后直接挂电话了（不返回结果）。然后查好了，他会主动打电话给你。在这里老板通过“回电”这种方式来回调。</p>
-<h2 id="阻塞与非阻塞"><a href="#阻塞与非阻塞" class="headerlink" title="阻塞与非阻塞"></a>阻塞与非阻塞</h2><p>阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态.<br>阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。</p>
-<p>还是上面的例子，你打电话问书店老板有没有《分布式系统》这本书，你如果是阻塞式调用，你会一直把自己“挂起”，直到得到这本书有没有的结果，如果是非阻塞式调用，你不管老板有没有告诉你，你自己先一边去玩了， 当然你也要偶尔过几分钟check一下老板有没有返回结果。在这里阻塞与非阻塞与是否同步异步无关。跟老板通过什么方式回答你结果无关。</p>
+        <h2 id="对数器的概念和使用"><a href="#对数器的概念和使用" class="headerlink" title="对数器的概念和使用"></a>对数器的概念和使用</h2><p>0 有一个你想测的方法<br>1 实现一个绝对正确但是复杂度不好的方法b<br>2 实现一个随机样本产生器<br>3 实现比对的方法<br>4 把方法a和方法b比对很多次来验证方法a是否正确<br>5 如果有一个样本使得比对出错，打印样本，分析是哪个方法出错<br>6 当样本数量很多时，比对测试依然正确，可以确定方法a已经正确</p>
+<pre><code class="java">public class Util {
+
+    public static void main(String[] args){
+        int times = 5000;
+        int maxSize = 10;
+        int maxValue = 100;
+        boolean success = true;
+        for(int i = 0; i &lt; times; i++){
+            int[] arr1 = genericArray(maxSize,maxValue);
+            int[] arr2 = copyArray(arr1);
+            insertSort(arr1);
+            Arrays.sort(arr2);
+            if(!isEqual(arr1,arr2)){
+                success = false;
+                break;
+            }
+        }
+        System.out.println(success ? &quot;nice!&quot;: &quot;fuck!&quot;);
+
+
+        int[] arr = genericArray(maxSize,maxValue);
+        printArray(arr);
+        insertSort(arr);
+        printArray(arr);
+
+    }
+
+    public static void printArray(int[] arr){
+        for(int i = 0; i &lt; arr.length; i++){
+            System.out.print(arr[i]+&quot; &quot;);
+        }
+        System.out.println();
+    }
+    public static void insertSort(int[] arr){
+        for(int i = 0; i &lt; arr.length; i++){
+            for(int j = i - 1; j &gt;= 0 &amp;&amp; arr[j] &gt; arr[j+1]; j--){
+                swap(arr,j,j+1);
+            }
+        }
+    }
+    public static void swap(int[] arr, int i, int j){
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
+    }
+
+    public static int[] genericArray(int maxSize, int maxValue){
+        int[] arr = new int[(int) (Math.random() * (maxSize + 1)) ];
+        for(int i = 0; i &lt; arr.length; i++){
+            arr[i] = (int) ((maxValue+1) * Math.random()) - (int)(maxValue * Math.random());
+        }
+        return arr;
+    }
+
+    public static int[] copyArray(int[] arr){
+        if(arr == null){
+            return null;
+        }
+        int[] arr_new = new int[arr.length];
+        for(int i = 0; i &lt; arr.length; i++){
+           arr_new[i] = arr[i];
+        }
+        return arr_new;
+    }
+
+    public static boolean isEqual(int[] arr1, int[] arr2){
+        if( (arr1 == null &amp;&amp; arr2 != null) || (arr1 != null &amp;&amp; arr2 == null) ){
+            return false;
+        }
+        if(arr1.length != arr2.length){
+            return false;
+        }
+        if(arr1 == null &amp;&amp; arr2 == null){
+            return true;
+        }
+        for(int i = 0; i &lt; arr1.length; i++){
+            if(arr1[i] != arr2[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
@@ -450,12 +525,12 @@
 
 
 <div class="article_copyright">
-    <p><span>文章标题:</span>怎样理解阻塞非阻塞与同步异步的区别？</p>
+    <p><span>文章标题:</span>对数器</p>
     
     <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
-    <p><span>发布时间:</span>2019-02-27, 14:42:15</p>
-    <p><span>最后更新:</span>2019-03-02, 08:15:56</p>
-    <span>原始链接:</span><a class="post-url" href="/2019-02-28-怎样理解阻塞非阻塞与同步异步的区别？/" title="怎样理解阻塞非阻塞与同步异步的区别？">http://johncaijun.github.io/2019-02-28-怎样理解阻塞非阻塞与同步异步的区别？/</a>
+    <p><span>发布时间:</span>2019-03-19, 16:30:49</p>
+    <p><span>最后更新:</span>2019-04-02, 02:23:48</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-03-20-对数器/" title="对数器">http://johncaijun.github.io/2019-03-20-对数器/</a>
     <p>
         <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
