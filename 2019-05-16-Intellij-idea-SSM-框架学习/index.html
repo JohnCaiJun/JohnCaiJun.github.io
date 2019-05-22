@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>Intellij idea SSM 框架学习 | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" Java ">
+  <meta name="description" content="Intellij idea SSM 框架学习 | Cai Jun&#39;s blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Personal web page">
+<meta name="keywords" content="caijun">
+<meta property="og:type" content="website">
+<meta property="og:title" content="category">
+<meta property="og:url" content="http://johncaijun.github.io/category/index.html">
+<meta property="og:site_name" content="Cai Jun&#39;s blog">
+<meta property="og:description" content="Personal web page">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-16T17:48:05.647Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="category">
+<meta name="twitter:description" content="Personal web page">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="/css/hl_theme/atom-light.css">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js"></script>
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+</div>
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>Cai Jun</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/johncaijun" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:johncai.caijun.cn@gmail.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"/>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+<ul>
+    <li class="all active">全部文章</li>
+    
+    <li data-rel="运维"> 运维 </li>
+    
+    <li data-rel="网络"> 网络 </li>
+    
+    <li data-rel="Java"> Java </li>
+    
+    <li data-rel="数据库"> 数据库 </li>
+    
+    <li data-rel="编程"> 编程 </li>
+    
+    <li data-rel="Git"> Git </li>
+    
+    <li data-rel="数据结构"> 数据结构 </li>
+    
+    <li data-rel="算法"> 算法 </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a style="border-right: 1px solid #fff; width: 49%" class="about site_url" href="/about">关于</a><a style="width: 50%" class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="29">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off" id="local-search-input">
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none">
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">运维</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">Doker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">Tcp</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">TCP/IP协议</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">Java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">MySQL</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">C++</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">Git</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">数据结构</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">Docker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">C</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">web</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">Firewall</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">算法</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">剑指offer</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">Shell</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a class="编程 " href="/2019-02-17-Advanced-Tips-for-c/" data-tag="C++" data-author="">
+            <span class="post-title" title="Advanced Tips for c++">Advanced Tips for c++</span>
+            <span class="post-date" title="2019-02-16 20:09:28">2019/02/16</span>
+        </a>
+        
+        <a class="Git " href="/2019-02-25-Branch/" data-tag="Git" data-author="">
+            <span class="post-title" title="Branch">Branch</span>
+            <span class="post-date" title="2019-02-24 14:59:00">2019/02/24</span>
+        </a>
+        
+        <a class="运维 " href="/2018-07-10-CentOS 7.0 环境编译thinstation/" data-tag="运维" data-author="">
+            <span class="post-title" title="CentOS 7.0 环境编译thinstation">CentOS 7.0 环境编译thinstation</span>
+            <span class="post-date" title="2018-07-09 12:43:17">2018/07/09</span>
+        </a>
+        
+        <a class="Git " href="/2019-02-17-Collaborating/" data-tag="Git" data-author="">
+            <span class="post-title" title="Collaborating">Collaborating</span>
+            <span class="post-date" title="2019-02-16 13:38:42">2019/02/16</span>
+        </a>
+        
+        <a class="数据结构 " href="/2019-02-23-Data-Structures-Key-Mind/" data-tag="数据结构" data-author="">
+            <span class="post-title" title="Data Structures Key Mind">Data Structures Key Mind</span>
+            <span class="post-date" title="2019-02-22 19:23:54">2019/02/22</span>
+        </a>
+        
+        <a class="运维 " href="/2019-03-10-Docker-Event-State/" data-tag="Docker" data-author="">
+            <span class="post-title" title="Docker Event State">Docker Event State</span>
+            <span class="post-date" title="2019-03-09 19:02:51">2019/03/09</span>
+        </a>
+        
+        <a class="Git " href="/2019-02-16-Getting-Started/" data-tag="Git" data-author="">
+            <span class="post-title" title="Getting Started">Getting Started</span>
+            <span class="post-date" title="2019-02-15 21:01:28">2019/02/15</span>
+        </a>
+        
+        <a class="Java " href="/2019-05-16-Intellij-idea-SSM-框架学习/" data-tag="Java" data-author="">
+            <span class="post-title" title="Intellij idea SSM 框架学习">Intellij idea SSM 框架学习</span>
+            <span class="post-date" title="2019-05-15 14:45:32">2019/05/15</span>
+        </a>
+        
+        <a class="数据库 " href="/2019-02-01-MySQL事务/" data-tag="MySQL" data-author="">
+            <span class="post-title" title="MySQL事务">MySQL事务</span>
+            <span class="post-date" title="2019-01-31 19:30:19">2019/01/31</span>
+        </a>
+        
+        <a class="数据库 " href="/2019-01-28-MySQL体系架构/" data-tag="MySQL" data-author="">
+            <span class="post-title" title="MySQL体系架构">MySQL体系架构</span>
+            <span class="post-date" title="2019-01-27 12:06:09">2019/01/27</span>
+        </a>
+        
+        <a class="网络 " href="/2019-02-27-TIME-WAIT详解/" data-tag="Tcp" data-author="">
+            <span class="post-title" title="TIME_WAIT详解">TIME_WAIT详解</span>
+            <span class="post-date" title="2019-02-26 22:58:18">2019/02/26</span>
+        </a>
+        
+        <a class="编程 " href="/2019-03-21-c风格字符数组与字符串/" data-tag="C++" data-author="">
+            <span class="post-title" title="c风格字符数组与字符串">c风格字符数组与字符串</span>
+            <span class="post-date" title="2019-03-20 17:58:03">2019/03/20</span>
+        </a>
+        
+        <a class="编程 " href="/2019-02-27-fork函数/" data-tag="C" data-author="">
+            <span class="post-title" title="fork函数">fork函数</span>
+            <span class="post-date" title="2019-02-26 22:40:45">2019/02/26</span>
+        </a>
+        
+        <a class="网络 " href="/2019-03-19-http前世今生/" data-tag="web" data-author="">
+            <span class="post-title" title="http前世今生">http前世今生</span>
+            <span class="post-date" title="2019-03-18 13:28:23">2019/03/18</span>
+        </a>
+        
+        <a class="运维 " href="/2019-03-11-iptables四表五链/" data-tag="Firewall" data-author="">
+            <span class="post-title" title="iptables四表五链">iptables四表五链</span>
+            <span class="post-date" title="2019-03-10 18:44:20">2019/03/10</span>
+        </a>
+        
+        <a class="算法 " href="/2019-02-27-二分查找/" data-tag="算法" data-author="">
+            <span class="post-title" title="二分查找">二分查找</span>
+            <span class="post-date" title="2019-02-26 11:05:58">2019/02/26</span>
+        </a>
+        
+        <a class="算法 " href="/2019-02-27-二叉查找树-前序遍历/" data-tag="算法" data-author="">
+            <span class="post-title" title="二叉查找树-前序遍历">二叉查找树-前序遍历</span>
+            <span class="post-date" title="2019-02-26 15:14:33">2019/02/26</span>
+        </a>
+        
+        <a class="算法 " href="/2019-02-27-二叉查找树/" data-tag="算法" data-author="">
+            <span class="post-title" title="二叉查找树">二叉查找树</span>
+            <span class="post-date" title="2019-02-26 11:40:11">2019/02/26</span>
+        </a>
+        
+        <a class="算法 " href="/2019-03-03-二叉树-后序遍历/" data-tag="算法" data-author="">
+            <span class="post-title" title="二叉树-后序遍历">二叉树-后序遍历</span>
+            <span class="post-date" title="2019-03-02 16:58:51">2019/03/02</span>
+        </a>
+        
+        <a class="算法 " href="/2019-02-23-二维数组中的查找/" data-tag="剑指offer" data-author="">
+            <span class="post-title" title="二维数组中的查找">二维数组中的查找</span>
+            <span class="post-date" title="2019-02-23 00:30:23">2019/02/23</span>
+        </a>
+        
+        <a class="算法 " href="/2019-03-22-十进制转二进制快速算法/" data-tag="C++" data-author="">
+            <span class="post-title" title="十进制转二进制快速算法">十进制转二进制快速算法</span>
+            <span class="post-date" title="2019-03-21 19:10:36">2019/03/21</span>
+        </a>
+        
+        <a class="算法 " href="/2019-03-20-对数器/" data-tag="算法" data-author="">
+            <span class="post-title" title="对数器">对数器</span>
+            <span class="post-date" title="2019-03-19 16:30:49">2019/03/19</span>
+        </a>
+        
+        <a class="算法 " href="/2019-02-28-快速排序/" data-tag="算法" data-author="">
+            <span class="post-title" title="快速排序">快速排序</span>
+            <span class="post-date" title="2019-02-27 15:28:59">2019/02/27</span>
+        </a>
+        
+        <a class="编程 " href="/2019-02-28-怎样理解阻塞非阻塞与同步异步的区别？/" data-tag="C++" data-author="">
+            <span class="post-title" title="怎样理解阻塞非阻塞与同步异步的区别？">怎样理解阻塞非阻塞与同步异步的区别？</span>
+            <span class="post-date" title="2019-02-27 14:42:15">2019/02/27</span>
+        </a>
+        
+        <a class="运维 " href="/2018-06-02-我来管理用户和组/" data-tag="运维" data-author="">
+            <span class="post-title" title="我来管理用户和组">我来管理用户和组</span>
+            <span class="post-date" title="2018-06-02 03:13:18">2018/06/02</span>
+        </a>
+        
+        <a class="算法 " href="/2019-02-27-插入排序/" data-tag="算法" data-author="">
+            <span class="post-title" title="插入排序">插入排序</span>
+            <span class="post-date" title="2019-02-26 11:24:25">2019/02/26</span>
+        </a>
+        
+        <a class="运维 " href="/2019-02-24-文本处理工具/" data-tag="Shell" data-author="">
+            <span class="post-title" title="文本处理工具">文本处理工具</span>
+            <span class="post-date" title="2019-02-24 02:31:40">2019/02/24</span>
+        </a>
+        
+        <a class="算法 " href="/2019-03-01-替换空格/" data-tag="剑指offer" data-author="">
+            <span class="post-title" title="替换空格">替换空格</span>
+            <span class="post-date" title="2019-02-28 16:21:23">2019/02/28</span>
+        </a>
+        
+        <a class="算法 " href="/2019-04-03-随机快排/" data-tag="算法" data-author="">
+            <span class="post-title" title="随机快排">随机快排</span>
+            <span class="post-date" title="2019-04-02 14:19:40">2019/04/02</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-Intellij-idea-SSM-框架学习" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <h1 class="article-title">Intellij idea SSM 框架学习</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+            <a href="javascript:" data-rel="Java">Java</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color5">Java</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2019-05-22 00:58:52">2019-05-15 14:45</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Intellij-idea-SSM-框架学习"><span class="toc-text">Intellij idea SSM 框架学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-创建maven项目"><span class="toc-text">1. 创建maven项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-设置settins-xml"><span class="toc-text">1.1 设置settins.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-完善pom-xml"><span class="toc-text">1.2 完善pom.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-完善web-xml"><span class="toc-text">1.3 完善web.xml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-数据库"><span class="toc-text">2 数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-完善spring-mybatis-xml"><span class="toc-text">2.1 完善spring-mybatis.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-连接数据库"><span class="toc-text">2.2 连接数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-创建数据库并且添加一条信息"><span class="toc-text">2.2.1 创建数据库并且添加一条信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-创建jdbc-properties"><span class="toc-text">2.2.2 创建jdbc.properties</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-创建entity实体"><span class="toc-text">2.2.3 创建entity实体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-4-创建Dao数据访问接口"><span class="toc-text">2.2.4 创建Dao数据访问接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-5-创建sql语句与Dao映射文件"><span class="toc-text">2.2.5 创建sql语句与Dao映射文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-单元测试"><span class="toc-text">3 单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-数据库连接单元测试"><span class="toc-text">3.1 数据库连接单元测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Spring-控制层与业务层"><span class="toc-text">4 Spring 控制层与业务层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-添加service业务层代码"><span class="toc-text">4.1 添加service业务层代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-添加controller控制类"><span class="toc-text">4.2 添加controller控制类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-添加spring-mvc-xml"><span class="toc-text">4.3 添加spring-mvc.xml</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Intellij-idea-SSM-框架学习"><a href="#Intellij-idea-SSM-框架学习" class="headerlink" title="Intellij idea SSM 框架学习"></a>Intellij idea SSM 框架学习</h1><p>首先，我有java,jsp&amp;servlet基础，并且手上还有一本《spring3.x企业应用开发实战》，再参照博客<a href="https://www.cnblogs.com/wmyskxz/p/8916365.html" target="_blank" rel="noopener">IDEA 整合 SSM 框架学习</a>进行一些实际操作练习。通过此博客记录一下ssm搭建过程。</p>
+<blockquote>
+<p>标注：代码均来自IDEA 整合 SSM 框架学习博客，谢谢博主。</p>
+</blockquote>
+<h2 id="1-创建maven项目"><a href="#1-创建maven项目" class="headerlink" title="1. 创建maven项目"></a>1. 创建maven项目</h2><p>在创建Maven项目前，首先安装Maven，然后编辑Maven的配置文件settings.xml，其路径一般在主用户目录/.m2/settins.xml。</p>
+<h3 id="1-1-设置settins-xml"><a href="#1-1-设置settins-xml" class="headerlink" title="1.1 设置settins.xml"></a>1.1 设置settins.xml</h3><p>settins.xml </p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;&gt;
+
+    &lt;pluginGroups /&gt;
+    &lt;proxies /&gt;
+    &lt;servers /&gt;
+
+    &lt;localRepository&gt;/Users/caijun/.m2/repository&lt;/localRepository&gt;
+
+    &lt;mirrors&gt;
+        &lt;mirror&gt;
+            &lt;id&gt;alimaven&lt;/id&gt;
+            &lt;name&gt;aliyun maven&lt;/name&gt;
+            &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;
+            &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+        &lt;/mirror&gt;
+    &lt;/mirrors&gt;
+  &lt;profiles&gt;
+    &lt;profile&gt;
+       &lt;id&gt;nexus&lt;/id&gt;
+        &lt;repositories&gt;
+            &lt;repository&gt;
+                &lt;id&gt;nexus&lt;/id&gt;
+                &lt;name&gt;local private nexus&lt;/name&gt;
+                &lt;url&gt;http://maven.oschina.net/content/groups/public/&lt;/url&gt;
+                &lt;releases&gt;
+                    &lt;enabled&gt;true&lt;/enabled&gt;
+                &lt;/releases&gt;
+                &lt;snapshots&gt;
+                    &lt;enabled&gt;false&lt;/enabled&gt;
+                &lt;/snapshots&gt;
+            &lt;/repository&gt;
+        &lt;/repositories&gt;
+
+        &lt;pluginRepositories&gt;
+            &lt;pluginRepository&gt;
+            &lt;id&gt;nexus&lt;/id&gt;
+            &lt;name&gt;local private nexus&lt;/name&gt;
+            &lt;url&gt;http://maven.oschina.net/content/groups/public/&lt;/url&gt;
+            &lt;releases&gt;
+                &lt;enabled&gt;true&lt;/enabled&gt;
+            &lt;/releases&gt;
+            &lt;snapshots&gt;
+                &lt;enabled&gt;false&lt;/enabled&gt;
+            &lt;/snapshots&gt;
+            &lt;/pluginRepository&gt;
+        &lt;/pluginRepositories&gt;
+    &lt;/profile&gt;&lt;/profiles&gt;
+
+&lt;/settings&gt;
+
+</code></pre>
+<p>在Maven项目创建完成后，首先编辑pom.xml，什么是pom.xml，它有什么作用?简单的说就是能够帮助你自动下载，管理jar包。</p>
+<h3 id="1-2-完善pom-xml"><a href="#1-2-完善pom-xml" class="headerlink" title="1.2 完善pom.xml"></a>1.2 完善pom.xml</h3><p>pom.xml</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;com.springmvc&lt;/groupId&gt;
+  &lt;artifactId&gt;hellohangzhou&lt;/artifactId&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;packaging&gt;war&lt;/packaging&gt;
+
+  &lt;name&gt;hellohangzhou Maven Webapp&lt;/name&gt;
+  &lt;!-- FIXME change it to the project&#39;s website --&gt;
+  &lt;url&gt;http://www.example.com&lt;/url&gt;
+
+  &lt;properties&gt;
+    &lt;!-- 设置项目编码编码 --&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+    &lt;!-- spring版本号 --&gt;
+    &lt;spring.version&gt;4.3.5.RELEASE&lt;/spring.version&gt;
+    &lt;!-- mybatis版本号 --&gt;
+    &lt;mybatis.version&gt;3.4.1&lt;/mybatis.version&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;maven.compiler.source&gt;1.7&lt;/maven.compiler.source&gt;
+    &lt;maven.compiler.target&gt;1.7&lt;/maven.compiler.target&gt;
+  &lt;/properties&gt;
+
+  &lt;dependencies&gt;
+    &lt;!-- java ee --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;javax&lt;/groupId&gt;
+      &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
+      &lt;version&gt;7.0&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;4.11&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- 实现slf4j接口并整合 --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+      &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+      &lt;version&gt;1.2.2&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- JSON --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+      &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+      &lt;version&gt;2.8.7&lt;/version&gt;
+    &lt;/dependency&gt;
+
+
+    &lt;!-- 数据库 --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;mysql&lt;/groupId&gt;
+      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+      &lt;version&gt;5.1.41&lt;/version&gt;
+      &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- 数据库连接池 --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.mchange&lt;/groupId&gt;
+      &lt;artifactId&gt;c3p0&lt;/artifactId&gt;
+      &lt;version&gt;0.9.5.2&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- MyBatis --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+      &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+      &lt;version&gt;${mybatis.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- mybatis/spring整合包 --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+      &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
+      &lt;version&gt;1.3.1&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- Spring --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-web&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-test&lt;/artifactId&gt;
+      &lt;version&gt;${spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+
+  &lt;build&gt;
+    &lt;finalName&gt;hellohangzhou&lt;/finalName&gt;
+    &lt;pluginManagement&gt;&lt;!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) --&gt;
+      &lt;plugins&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-clean-plugin&lt;/artifactId&gt;
+          &lt;version&gt;3.1.0&lt;/version&gt;
+        &lt;/plugin&gt;
+        &lt;!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging --&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;
+          &lt;version&gt;3.0.2&lt;/version&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+          &lt;version&gt;3.8.0&lt;/version&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+          &lt;version&gt;2.22.1&lt;/version&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+          &lt;version&gt;3.2.2&lt;/version&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-install-plugin&lt;/artifactId&gt;
+          &lt;version&gt;2.5.2&lt;/version&gt;
+        &lt;/plugin&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-deploy-plugin&lt;/artifactId&gt;
+          &lt;version&gt;2.8.2&lt;/version&gt;
+        &lt;/plugin&gt;
+      &lt;/plugins&gt;
+    &lt;/pluginManagement&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+
+</code></pre>
+<h3 id="1-3-完善web-xml"><a href="#1-3-完善web-xml" class="headerlink" title="1.3 完善web.xml"></a>1.3 完善web.xml</h3><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;
+         version=&quot;3.1&quot;&gt;
+
+  &lt;!-- 编码过滤器 --&gt;
+  &lt;filter&gt;
+    &lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;encoding&lt;/param-name&gt;
+      &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+    &lt;/init-param&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;
+
+  &lt;!-- 配置DispatcherServlet --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;SpringMVC&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+    &lt;!-- 配置springMVC需要加载的配置文件--&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+      &lt;param-value&gt;classpath:spring-*.xml&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;async-supported&gt;true&lt;/async-supported&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;SpringMVC&lt;/servlet-name&gt;
+    &lt;!-- 匹配所有请求 --&gt;
+    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+
+&lt;/web-app&gt;
+</code></pre>
+<h2 id="2-数据库"><a href="#2-数据库" class="headerlink" title="2 数据库"></a>2 数据库</h2><h3 id="2-1-完善spring-mybatis-xml"><a href="#2-1-完善spring-mybatis-xml" class="headerlink" title="2.1 完善spring-mybatis.xml"></a>2.1 完善spring-mybatis.xml</h3><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot; xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd&quot;&gt;
+
+    &lt;!-- 扫描service包下所有使用注解的类型 --&gt;
+    &lt;context:component-scan base-package=&quot;com.springmvc.service&quot;/&gt;
+
+    &lt;!-- 配置数据库相关参数properties的属性：${url} --&gt;
+    &lt;context:property-placeholder location=&quot;classpath:jdbc.properties&quot;/&gt;
+
+    &lt;!-- 数据库连接池 --&gt;
+    &lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;
+        &lt;property name=&quot;driverClass&quot; value=&quot;${jdbc.driver}&quot;/&gt;
+        &lt;property name=&quot;jdbcUrl&quot; value=&quot;${jdbc.url}&quot;/&gt;
+        &lt;property name=&quot;user&quot; value=&quot;${jdbc.username}&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置SqlSessionFactory对象 --&gt;
+    &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+        &lt;!-- 注入数据库连接池 --&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+        &lt;!-- 扫描entity包 使用别名 --&gt;
+        &lt;property name=&quot;typeAliasesPackage&quot; value=&quot;com.springmvc.entity&quot;/&gt;
+        &lt;!-- 扫描sql配置文件:mapper需要的xml文件 --&gt;
+        &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:mapper/*.xml&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 --&gt;
+    &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+        &lt;!-- 注入sqlSessionFactory --&gt;
+        &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sqlSessionFactory&quot;/&gt;
+        &lt;!-- 给出需要扫描Dao接口包 --&gt;
+        &lt;property name=&quot;basePackage&quot; value=&quot;com.springmvc.dao&quot;/&gt;
+    &lt;/bean&gt;
+
+
+
+    &lt;!-- 配置事务管理器 --&gt;
+    &lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+        &lt;!-- 注入数据库连接池 --&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置基于注解的声明式事务 --&gt;
+    &lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot;/&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<h3 id="2-2-连接数据库"><a href="#2-2-连接数据库" class="headerlink" title="2.2 连接数据库"></a>2.2 连接数据库</h3><h4 id="2-2-1-创建数据库并且添加一条信息"><a href="#2-2-1-创建数据库并且添加一条信息" class="headerlink" title="2.2.1 创建数据库并且添加一条信息"></a>2.2.1 创建数据库并且添加一条信息</h4><p>在数据库中执行该语句，如Navicat for MySQL</p>
+<pre><code class="sql">DROP DATABASE IF EXISTS ssm;
+CREATE DATABASE ssmDEFAULT CHARACTER SET utf8;
+
+use ssm;
+CREATE TABLE user(
+  id int(11) NOT NULL AUTO_INCREMENT,
+  username varchar(50) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO user VALUES(1,&#39;userName&#39;);
+</code></pre>
+<h4 id="2-2-2-创建jdbc-properties"><a href="#2-2-2-创建jdbc-properties" class="headerlink" title="2.2.2 创建jdbc.properties"></a>2.2.2 创建jdbc.properties</h4><pre><code class="properties">jdbc.driver=com.mysql.jdbc.Driver
+#数据库地址
+jdbc.url=jdbc:mysql://localhost:3306/springtest
+#用户名
+jdbc.username=root
+#密码
+jdbc.password=******
+
+</code></pre>
+<h4 id="2-2-3-创建entity实体"><a href="#2-2-3-创建entity实体" class="headerlink" title="2.2.3 创建entity实体"></a>2.2.3 创建entity实体</h4><p>User.java</p>
+<pre><code class="java">package com.springmvc.entity;
+
+import java.io.Serializable;
+
+/**
+ * 描述:
+ * User 实体类
+ *
+ * @author caijun
+ * @create 2019-05-15 15:33
+ */
+
+public class User implements Serializable {
+    private int id;
+    private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+</code></pre>
+<h4 id="2-2-4-创建Dao数据访问接口"><a href="#2-2-4-创建Dao数据访问接口" class="headerlink" title="2.2.4 创建Dao数据访问接口"></a>2.2.4 创建Dao数据访问接口</h4><p>基于注解的方式要标注(@Repository)</p>
+<p>IUserDao.java</p>
+<pre><code class="java">package com.springmvc.dao;
+
+
+import com.springmvc.entity.User;
+import org.springframework.stereotype.Repository;
+
+import javax.transaction.Transactional;
+
+@Repository
+@Transactional
+public interface IUserDao {
+    User findUserById(int id);
+}
+
+</code></pre>
+<h4 id="2-2-5-创建sql语句与Dao映射文件"><a href="#2-2-5-创建sql语句与Dao映射文件" class="headerlink" title="2.2.5 创建sql语句与Dao映射文件"></a>2.2.5 创建sql语句与Dao映射文件</h4><p>mapper/userMapper.xml</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+&lt;!-- 设置为IUserDao接口方法提供sql语句配置 --&gt;
+&lt;mapper namespace=&quot;com.springmvc.dao.IUserDao&quot;&gt;
+
+    &lt;resultMap type=&quot;User&quot; id=&quot;userResultMap&quot;&gt;
+        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
+        &lt;result property=&quot;name&quot; column=&quot;username&quot;/&gt;
+    &lt;/resultMap&gt;
+
+    &lt;!-- 根据id查找用户 --&gt;
+    &lt;select id=&quot;findUserById&quot; resultType=&quot;com.springmvc.entity.User&quot; parameterType=&quot;int&quot; resultMap=&quot;userResultMap&quot;&gt;
+        SELECT * FROM user WHERE id = #{id}
+    &lt;/select&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+<h2 id="3-单元测试"><a href="#3-单元测试" class="headerlink" title="3 单元测试"></a>3 单元测试</h2><h3 id="3-1-数据库连接单元测试"><a href="#3-1-数据库连接单元测试" class="headerlink" title="3.1 数据库连接单元测试"></a>3.1 数据库连接单元测试</h3><p>测试能否从数据库中获取数据</p>
+<pre><code class="java">import com.springmvc.dao.IUserDao;
+import com.springmvc.entity.User;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+/**
+ * 描述:
+ * UserDao 的测试类
+ *
+ * @author caijun
+ * @create 2019-05-15 15:45
+ */
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({&quot;classpath:spring-mybatis.xml&quot;})
+public class UserDaoTest {
+    @Autowired
+    private IUserDao userDao;
+
+    @Test
+    public void testFindUserById()
+    {
+        int id = 2;
+        User user = userDao.findUserById(id);
+
+        System.out.println(&quot;用户id:&quot;+user.getId());
+        System.out.println(&quot;用户名：&quot;+user.getName());
+    }
+
+}
+
+</code></pre>
+<p>运行单元测试，控制态输出正确结果则spring&amp;mybatis整合完成。</p>
+<h2 id="4-Spring-控制层与业务层"><a href="#4-Spring-控制层与业务层" class="headerlink" title="4 Spring 控制层与业务层"></a>4 Spring 控制层与业务层</h2><h3 id="4-1-添加service业务层代码"><a href="#4-1-添加service业务层代码" class="headerlink" title="4.1 添加service业务层代码"></a>4.1 添加service业务层代码</h3><p>IUserService.java</p>
+<pre><code class="java">package com.springmvc.service;
+
+import com.springmvc.entity.User;
+
+public interface IUserService {
+    User findUserById(int id);
+}
+
+</code></pre>
+<p>IUserServiceImpl.java</p>
+<pre><code class="java">package com.springmvc.service;
+
+import com.springmvc.dao.IUserDao;
+import com.springmvc.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * 描述:
+ * User 业务层代码
+ *
+ * @author caijun
+ * @create 2019-05-15 21:05
+ */
+
+@Service(&quot;userService&quot;)
+public class UserServiceImpl implements IUserService{
+    @Autowired
+    private IUserDao userDao;
+
+    @Override
+    public User findUserById(int id) {
+        return userDao.findUserById(id);
+    }
+}
+
+</code></pre>
+<h3 id="4-2-添加controller控制类"><a href="#4-2-添加controller控制类" class="headerlink" title="4.2 添加controller控制类"></a>4.2 添加controller控制类</h3><p>UserController.java</p>
+<pre><code class="java">package com.springmvc.controller;
+
+import com.springmvc.entity.User;
+import com.springmvc.service.UserServiceImpl;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Resource;
+
+/**
+ * 描述:
+ * User 控制层类
+ *
+ * @author caijun
+ * @create 2019-05-15 21:16
+ */
+
+
+@Controller
+@RequestMapping(&quot;&quot;)
+public class UserController {
+
+    @Resource
+    private UserServiceImpl userService;
+
+    @RequestMapping(&quot;/findUser&quot;)
+    public String findUser(Model model){
+       int id = 2;
+       User user = userService.findUserById(id);
+       model.addAttribute(&quot;user&quot;,user);
+       return &quot;index&quot;;
+    }
+
+}
+
+</code></pre>
+<h3 id="4-3-添加spring-mvc-xml"><a href="#4-3-添加spring-mvc-xml" class="headerlink" title="4.3 添加spring-mvc.xml"></a>4.3 添加spring-mvc.xml</h3><p>添加spring框架调度器，spring拦截所有前端请求，由调度器统一调度。</p>
+<p>spring-mvc.xml</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd&quot;&gt;
+
+    &lt;!-- 扫描web相关的bean --&gt;
+    &lt;context:component-scan base-package=&quot;com.springmvc.controller&quot;/&gt;
+
+    &lt;!-- 开启SpringMVC注解模式 --&gt;
+    &lt;mvc:annotation-driven/&gt;
+
+    &lt;!-- 静态资源默认servlet配置 --&gt;
+    &lt;mvc:default-servlet-handler/&gt;
+
+    &lt;!-- 配置jsp 显示ViewResolver --&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+        &lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.JstlView&quot;/&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/&quot;/&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span>文章标题:</span>Intellij idea SSM 框架学习</p>
+    
+    <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
+    <p><span>发布时间:</span>2019-05-15, 14:45:32</p>
+    <p><span>最后更新:</span>2019-05-22, 00:58:52</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-05-16-Intellij-idea-SSM-框架学习/" title="Intellij idea SSM 框架学习">http://johncaijun.github.io/2019-05-16-Intellij-idea-SSM-框架学习/</a>
+    <p>
+        <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+    
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2019 CaiJun</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+</body>
+<script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+<script src="/js/script.js"></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#运维','#Doker','#Tcp','#TCP/IP协议','#Java','#MySQL','#C++','#Git','#数据结构','#Docker','#C','#web','#Firewall','#算法','#剑指offer','#Shell',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1;
+            var $numbering = $('<ul/>').addClass('pre-numbering').attr("unselectable","on");
+            $(this).addClass('has-numbering')
+                    .parent()
+                    .append($numbering);
+            for(i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 2px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 2px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /*引用块样式*/
+    
+    .post .pjax article blockquote {
+        padding: 10px 20px;
+        background-color: white;
+        border: none;
+        border-left: 4px solid #42b983;
+        border-right: 4px solid #42b983;
+        border-radius: 10px;
+    }
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        background: url("https://i.loli.net/2019/02/23/5c7039881c035.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+</style>
+
+
+
+
+
+
+</html>
