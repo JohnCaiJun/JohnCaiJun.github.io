@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>Docker Event State | Cai Jun&#39;s blog</title>
-  <meta name="keywords" content=" Docker ">
-  <meta name="description" content="Docker Event State | Cai Jun&#39;s blog">
+  <title>LayUI-SpringMVC-Pagehelper完美实现分页 | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" Java Spring LayUI ">
+  <meta name="description" content="LayUI-SpringMVC-Pagehelper完美实现分页 | Cai Jun&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Personal web page">
 <meta name="keywords" content="caijun">
@@ -380,9 +380,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Docker-Event-State" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-LayUI-SpringMVC-Pagehelper完美实现分页" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">Docker Event State</h1>
+        <h1 class="article-title">LayUI-SpringMVC-Pagehelper完美实现分页</h1>
     
     <div class="article-meta">
         
@@ -390,21 +390,21 @@
         
         <span class="book">
             
-            <a href="javascript:" data-rel="运维">运维</a>
+            <a href="javascript:" data-rel="Java">Java</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color2">Docker</a>
+            <a href="javascript:" class="color3">Java Spring LayUI</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-03-10 12:03:00">2019-03-09 19:02</time>
+        创建时间:<time class="date" title="更新时间: 2019-06-08 01:10:28">2019-06-08 12:45</time>
         
     </div>
     <div class="article-meta">
@@ -426,7 +426,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Event-State"><span class="toc-text">Docker Event State</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建容器"><span class="toc-text">创建容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#制作镜像"><span class="toc-text">制作镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基于容器制作"><span class="toc-text">基于容器制作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于镜像制作"><span class="toc-text">基于镜像制作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker网络"><span class="toc-text">Docker网络</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LayUI-SpringMVC-Pagehelper完美实现分页"><span class="toc-text">LayUI-SpringMVC-Pagehelper完美实现分页</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-导入pagehelper"><span class="toc-text">1. 导入pagehelper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-配置pagehelper"><span class="toc-text">2. 配置pagehelper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-LayUI前端View界面"><span class="toc-text">3. LayUI前端View界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-后台实现"><span class="toc-text">4. 后台实现</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -441,45 +441,75 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Docker-Event-State"><a href="#Docker-Event-State" class="headerlink" title="Docker Event State"></a>Docker Event State</h2><p><img src="../media/15521294687240.jpg" alt=""></p>
-<h3 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h3><p>基于“镜像文件”，镜像文件有默运行的程序。</p>
-<p>运行的容器内部必须有一个工作前台的运行的进程</p>
-<blockquote>
-<p>docker的容器通常仅为运行一个程序。如果想在容器内运行多个程序，一般需要提供一个管控程序，例如supervised。</p>
-</blockquote>
-<h3 id="制作镜像"><a href="#制作镜像" class="headerlink" title="制作镜像"></a>制作镜像</h3><p><img src="../media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-09%2022.34.04.png" alt=""></p>
-<h4 id="基于容器制作"><a href="#基于容器制作" class="headerlink" title="基于容器制作"></a>基于容器制作</h4><p>制作nginx的容器镜像，在容器中完成操作后制作</p>
-<pre><code class="bash">docker commit -a &quot;AUTHOR_NAME&quot; -C &#39;CMD [&quot;/usr/sbin/nginx&quot;]&#39; DOCKER_NAME  
-
-# 运行
-docker run --name DOCKER_NAME -d REPOSITORY:TAG
+        <h1 id="LayUI-SpringMVC-Pagehelper完美实现分页"><a href="#LayUI-SpringMVC-Pagehelper完美实现分页" class="headerlink" title="LayUI-SpringMVC-Pagehelper完美实现分页"></a>LayUI-SpringMVC-Pagehelper完美实现分页</h1><h2 id="1-导入pagehelper"><a href="#1-导入pagehelper" class="headerlink" title="1. 导入pagehelper"></a>1. 导入pagehelper</h2><p>编辑 pom.xml，添加</p>
+<pre><code class="xml">    &lt;dependency&gt;
+      &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;
+      &lt;artifactId&gt;pagehelper&lt;/artifactId&gt;
+        &lt;version&gt;${pagehelper.version}&lt;/version&gt;
+    &lt;/dependency&gt;
 </code></pre>
-<p>将镜像文件导出为tar文件</p>
-<pre><code class="bash">docker save -o /root/nginx-v0.1.0.tar INAME_ID
-
-#导入
-docker loader -i /root/nginx-v0.1.0.tar
+<h2 id="2-配置pagehelper"><a href="#2-配置pagehelper" class="headerlink" title="2. 配置pagehelper"></a>2. 配置pagehelper</h2><p>编辑spring-mybatis.xml，添加”plugin” -&gt; “pagehelper”</p>
+<pre><code class="xml">    &lt;!-- 配置SqlSessionFactory对象 --&gt;
+    &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+        &lt;!-- 注入数据库连接池 --&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+        &lt;!-- 扫描entity包 使用别名 --&gt;
+        &lt;property name=&quot;typeAliasesPackage&quot; value=&quot;com.springmvc.entity&quot;/&gt;
+        &lt;!-- 扫描sql配置文件:mapper需要的xml文件 --&gt;
+        &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:mapper/*.xml&quot;/&gt;
+        &lt;property name=&quot;plugins&quot;&gt;
+            &lt;array&gt;
+                &lt;!--分页工具--&gt;
+                &lt;bean class=&quot;com.github.pagehelper.PageHelper&quot;&gt;
+                    &lt;property name=&quot;properties&quot;&gt;
+                        &lt;value&gt;
+                            dialect=mysql
+                        &lt;/value&gt;
+                    &lt;/property&gt;
+                &lt;/bean&gt;
+            &lt;/array&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 </code></pre>
-<h4 id="基于镜像制作"><a href="#基于镜像制作" class="headerlink" title="基于镜像制作"></a>基于镜像制作</h4><p>编辑一个Dockerfile，而后根据此文件制作</p>
-<pre><code class="bash">FROM repository:tag
-MAINTAINER author &lt;author@mail.com&gt;
-COPY dir1 dir2
-ADD http://host/resource /dir/
-VOLUME /data/html
-EXPOSE 80/tcp
-
-ENV var_key var_value
-ADD ${var_key} /dir/
-
-RUN command_1 \
-    &amp;&amp; command_2 \
-    &amp;&amp; command_3
-
-CMD [&quot;excute_command&quot;,&quot;param1&quot;,&quot;param2&quot;]
-
-ONBUILD (基于此镜像触发此命令)
+<h2 id="3-LayUI前端View界面"><a href="#3-LayUI前端View界面" class="headerlink" title="3. LayUI前端View界面"></a>3. LayUI前端View界面</h2><p>数据表格开启分页功能：<code>page:true</code></p>
+<pre><code class="jsp">        table.render({
+            elem: &#39;#test&#39;
+            ,url:&#39;&lt;%=basePath%&gt;/people/people.json&#39;
+            ,toolbar: &#39;#toolbarDemo&#39;
+            ,title: &#39;用户数据表&#39;
+            ,cols: [[
+                {type: &#39;checkbox&#39;, fixed: &#39;left&#39;}
+                ,{field:&#39;id&#39;, title:&#39;ID&#39;, width:80, fixed: &#39;left&#39;, unresize: true, sort: true}
+                ,{field:&#39;userName&#39;, title:&#39;用户名&#39;, width:120, edit: &#39;text&#39;}
+                ,{field:&#39;email&#39;, title:&#39;邮箱&#39;, width:150, edit: &#39;text&#39;, templet: function(res){
+                        return &#39;&lt;em&gt;&#39;+ res.email +&#39;&lt;/em&gt;&#39;
+                    }}
+                ,{field:&#39;sex&#39;, title:&#39;性别&#39;, width:80, edit: &#39;text&#39;, sort: true}
+                ,{field:&#39;city&#39;, title:&#39;城市&#39;, width:100}
+                ,{field:&#39;sign&#39;, title:&#39;签名&#39;}
+                ,{field:&#39;experience&#39;, title:&#39;积分&#39;, width:80, sort: true}
+                ,{field:&#39;ip&#39;, title:&#39;IP&#39;, width:120}
+                ,{field:&#39;logins&#39;, title:&#39;登入次数&#39;, width:100, sort: true}
+                ,{field:&#39;joinTime&#39;, title:&#39;加入时间&#39;, width:120}
+                ,{fixed: &#39;right&#39;, title:&#39;操作&#39;, toolbar: &#39;#barDemo&#39;, width:150}
+            ]]
+            ,page: true
+        });
 </code></pre>
-<h3 id="Docker网络"><a href="#Docker网络" class="headerlink" title="Docker网络"></a>Docker网络</h3><p><img src="../media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-10%2008.52.22.png" alt="four network container archetypes"></p>
+<h2 id="4-后台实现"><a href="#4-后台实现" class="headerlink" title="4. 后台实现"></a>4. 后台实现</h2><p>ServiceImpl</p>
+<pre><code class="java">    @Override
+    public Map&lt;String, Object&gt; getMapAll(int page, int limit) {
+        PageHelper.startPage(page, limit);
+        List&lt;People&gt; peopleList = peopleMapper.getAll(); // 从数据库中返回people表的所有信息
+        PageInfo&lt;People&gt; pageInfo=new PageInfo&lt;People&gt;(peopleList); // pagehelper进行封装
+        Map&lt;String,Object&gt; map=new HashMap&lt;String, Object&gt;();
+        map.put(&quot;code&quot;,0);
+        map.put(&quot;msg&quot;,&quot;&quot;);
+        map.put(&quot;count&quot;,pageInfo.getTotal()); // pagehelper包装
+        map.put(&quot;data&quot;,pageInfo.getList()); // pagehelper包装
+        return map;
+    }
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
@@ -493,12 +523,12 @@ ONBUILD (基于此镜像触发此命令)
 
 
 <div class="article_copyright">
-    <p><span>文章标题:</span>Docker Event State</p>
+    <p><span>文章标题:</span>LayUI-SpringMVC-Pagehelper完美实现分页</p>
     
     <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
-    <p><span>发布时间:</span>2019-03-09, 19:02:51</p>
-    <p><span>最后更新:</span>2019-03-10, 12:03:00</p>
-    <span>原始链接:</span><a class="post-url" href="/2019-03-10-Docker-Event-State/" title="Docker Event State">http://johncaijun.github.io/2019-03-10-Docker-Event-State/</a>
+    <p><span>发布时间:</span>2019-06-08, 12:45:17</p>
+    <p><span>最后更新:</span>2019-06-08, 01:10:28</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-06-09-LayUI-SpringMVC-Pagehelper完美实现分页/" title="LayUI-SpringMVC-Pagehelper完美实现分页">http://johncaijun.github.io/2019-06-09-LayUI-SpringMVC-Pagehelper完美实现分页/</a>
     <p>
         <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
