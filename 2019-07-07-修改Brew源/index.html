@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>二维数组中的查找 | Cai Jun&#39;s blog</title>
-  <meta name="keywords" content=" 剑指offer ">
-  <meta name="description" content="二维数组中的查找 | Cai Jun&#39;s blog">
+  <title>修改Brew源 | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" Mac ">
+  <meta name="description" content="修改Brew源 | Cai Jun&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Personal web page">
 <meta name="keywords" content="caijun">
@@ -391,9 +391,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-二维数组中的查找" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-修改Brew源" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">二维数组中的查找</h1>
+        <h1 class="article-title">修改Brew源</h1>
     
     <div class="article-meta">
         
@@ -401,21 +401,21 @@
         
         <span class="book">
             
-            <a href="javascript:" data-rel="算法">算法</a>
+            <a href="javascript:" data-rel="Mac">Mac</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color3">剑指offer</a>
+            <a href="javascript:" class="color4">Mac</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-02-22 11:53:48">2019-02-23 00:30</time>
+        创建时间:<time class="date" title="更新时间: 2019-07-06 01:03:30">2019-07-06 12:51</time>
         
     </div>
     <div class="article-meta">
@@ -437,7 +437,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解析"><span class="toc-text">解析</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#替换-brew源"><span class="toc-text">替换  brew源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重置-brew源"><span class="toc-text">重置  brew源</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -452,48 +452,20 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
-<pre><code class="c++">class Solution {
-public:
-    bool Find(int target, vector&lt;vector&lt;int&gt; &gt; array) {
-        if(array.empty()){
-            return false;
-        }     
-        int i = 0;
-        int j1 = array.size() - 1;
-        int j2 = array[0].size() - 1;
+        <h2 id="替换-brew源"><a href="#替换-brew源" class="headerlink" title="替换  brew源"></a>替换  brew源</h2><p>我们用brew命令安装软件时，经常会遇到这样的情况：<code>brew install xxxx 一直卡在Updating Homebrew....</code>只要我们进行替换就可以解决这个问题。</p>
+<pre><code class="shell">cd &quot;$(brew --repo)&quot;
+git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
 
-        int min = array[0][0];
-        int max = array[j1][j2];
-
-        if ( target &lt; min || target &gt; max){
-            return false;
-        }
-
-        while ( i &lt; j1 &amp;&amp; j2 &gt;= 0){
-            if( target &lt; array[i][j2] ){
-                j--;
-            }else if( target &gt; array[i][j2] ){
-                i++;
-            }else{
-                return true;
-            }
-        }
-        return false;   
-    }
-};
+cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git 
 </code></pre>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>信息：</p>
-<ol>
-<li>最小数（min）是第一行第一个，最大数（max）是最后一行的最后一个</li>
-<li>每一行最大的一个数是每一行的最后一个，每一行最小一个数是每一行的第一个 </li>
-</ol>
-<blockquote>
-<p>Key Mind:</p>
-<blockquote>
-<p>先从第一行的最后一个数（称为J），开始比较，如果目标大于J，则与下一行的最后一个数比较，如此循环，直到目标比J小，当目标比J小时，我们就能确定是哪一行</p>
-</blockquote>
-</blockquote>
+<h2 id="重置-brew源"><a href="#重置-brew源" class="headerlink" title="重置  brew源"></a>重置  brew源</h2><p>如果你想重置brew源，那么切换为原来的下载地址就可以了。</p>
+<pre><code class="shell">cd &quot;$(brew --repo)&quot;
+git remote set-url origin https://github.com/Homebrew/brew.git
+
+cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
+git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
@@ -507,12 +479,12 @@ public:
 
 
 <div class="article_copyright">
-    <p><span>文章标题:</span>二维数组中的查找</p>
+    <p><span>文章标题:</span>修改Brew源</p>
     
     <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
-    <p><span>发布时间:</span>2019-02-23, 00:30:23</p>
-    <p><span>最后更新:</span>2019-02-22, 11:53:48</p>
-    <span>原始链接:</span><a class="post-url" href="/2019-02-23-二维数组中的查找/" title="二维数组中的查找">http://johncaijun.github.io/2019-02-23-二维数组中的查找/</a>
+    <p><span>发布时间:</span>2019-07-06, 12:51:03</p>
+    <p><span>最后更新:</span>2019-07-06, 01:03:30</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-07-07-修改Brew源/" title="修改Brew源">http://johncaijun.github.io/2019-07-07-修改Brew源/</a>
     <p>
         <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
