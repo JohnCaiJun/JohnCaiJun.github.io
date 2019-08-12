@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>Getting Started | Cai Jun&#39;s blog</title>
-  <meta name="keywords" content=" Git ">
-  <meta name="description" content="Getting Started | Cai Jun&#39;s blog">
+  <title>Spring-boot 常用注解大全 | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" Java Spring-boot ">
+  <meta name="description" content="Spring-boot 常用注解大全 | Cai Jun&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Personal web page">
 <meta name="keywords" content="caijun">
@@ -422,9 +422,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Getting-Started" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-Spring-boot-常用注解大全" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">Getting Started</h1>
+        <h1 class="article-title">Spring-boot 常用注解大全</h1>
     
     <div class="article-meta">
         
@@ -432,21 +432,21 @@
         
         <span class="book">
             
-            <a href="javascript:" data-rel="Git">Git</a>
+            <a href="javascript:" data-rel="Java">Java</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color4">Git</a>
+            <a href="javascript:" class="color2">Java Spring-boot</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-07-20 04:57:18">2019-02-15 21:01</time>
+        创建时间:<time class="date" title="更新时间: 2019-08-05 11:21:01">2019-08-05 23:05</time>
         
     </div>
     <div class="article-meta">
@@ -468,7 +468,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设置存储库"><span class="toc-text">设置存储库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-diff（比较差异）"><span class="toc-text">git diff（比较差异）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销"><span class="toc-text">撤销</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#吃后悔药"><span class="toc-text">吃后悔药</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除"><span class="toc-text">删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回到过去"><span class="toc-text">回到过去</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看暂存区和HEAD中的目录"><span class="toc-text">查看暂存区和HEAD中的目录</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#控制类"><span class="toc-text">控制类</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -483,100 +483,8 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="设置存储库"><a href="#设置存储库" class="headerlink" title="设置存储库"></a>设置存储库</h2><p>Git的三个配置文件分别是版本库级别的配置文件（该项目目录下）、全局配置文件（用户主目录下）、系统级配置文件（/etc目录下）。其中版本库级别的配置文件优先级最高。</p>
-<p>按照优先级高低依次为：</p>
-<pre><code class="git">$ git config -e 
-$ git config -e --global
-$ git config -e --system  
-</code></pre>
-<p>执行以上命令会打开相应的git配置文件。</p>
-<h2 id="git-diff（比较差异）"><a href="#git-diff（比较差异）" class="headerlink" title="git diff（比较差异）"></a>git diff（比较差异）</h2><p>工作区（当前工作目录下的文件）、提交暂存区（已经git add 的文件）、版本库中的文件。</p>
-<p>例如：<br>当前目录下有一个welcome.txt文件</p>
-<p>在工作区的内容为：</p>
-<pre><code class="txt">hello
-nice to meet you
-byebye
-</code></pre>
-<p>在提交暂存区的内容为：</p>
-<pre><code class="txt">hello
-nice to meet you
-</code></pre>
-<p>在版本库中的内容为：</p>
-<pre><code class="txt">hello
-</code></pre>
-<p>也就是说welcome.txt有三个不同的版本，一个在工作区，一个在等待提交的暂存区，还有一个是版本库中最新版本的welcome.txt。通过调用不同的git diff命令可以看到不同状态下的welcome.txt文件的差异。</p>
-<pre><code class="git">1. 显示工作区（1号库）与提交暂存区（2号库）中文件的差异
-$ git diff 
-
-2. 显示工作区（1号库）与当前版本库（3号库）中文件的差异
-$ git diff HEAD
-
-3. 显示提交暂存区（2号库）与版本库中（3号库）文件的差异（--cached或--staged）
-$ git diff --cached
-</code></pre>
-<h2 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h2><h3 id="吃后悔药"><a href="#吃后悔药" class="headerlink" title="吃后悔药"></a>吃后悔药</h3><p>依照暂存区（2号库）welcome.txt重置工作区（1号库）welcome.txt文件</p>
-<pre><code class="bash">$ git checkout -- welcome.txt
-
-#执行 git diff 通过状态输出可以看到工作区与暂存区已经没有改动了。
-
-#！！如果git checkout HEAD则会依照版本库重置暂存区和工作区（极具危险性）
-</code></pre>
-<p>依照版本库(3号库)重置暂存区（2号库），但工作区不受影响（1号库）</p>
-<pre><code class="bash">$ git reset HEAD
-</code></pre>
-<p>直接从暂存区（2号库）删除文件，工作区（1号库）不受影响</p>
-<pre><code class="bash"># 假如不小心把.idea目录保存到了暂存区，则可以
-$ git rm -r --cached .idea
-</code></pre>
-<p>回到commit之前</p>
-<pre><code class="bash">$ git commit -m &quot;添加element-ui&quot;
-# 比如说我提交时commit信息想改一下
-$ git reset --soft HEAD^
-# 然后再次提交
-$ git commit -m &quot;添加element-ui和axios&quot;
-</code></pre>
-<p>回到某个提交节点ID，重置为ID的版本库、暂存区、工作区</p>
-<pre><code class="bash">$ git reset --hard ID
-
-# 如果我想删除上一次的版本库历史
-$ git reset --hard HEAD^
-$ git push --force
-</code></pre>
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>显示会删除当前目录下的未跟踪的文件（Untracked）或目录</p>
-<pre><code class="bash">$ git clean -dn
-</code></pre>
-<p>删除未跟踪的文件</p>
-<pre><code class="bash">$ git clean -f &lt;path&gt; (默认为当前目录)
-</code></pre>
-<p>删除未跟踪的文件和目录</p>
-<pre><code class="bash">$ git clean -dn
-</code></pre>
-<h3 id="回到过去"><a href="#回到过去" class="headerlink" title="回到过去"></a>回到过去</h3><pre><code class="bash"># 查看历史
-$ git log --oneline
-
-# 回到某个历史节点
-$ git checkout NODE_ID
-
-# 回到某个提交节点，重置版本库、暂存区、工作区
-$ git reset --hard HEAD^(ID)
-
-# 相当于undo操作，但是该提交任然存在历史当中
-$ git revert HEAD
-</code></pre>
-<h2 id="查看暂存区和HEAD中的目录"><a href="#查看暂存区和HEAD中的目录" class="headerlink" title="查看暂存区和HEAD中的目录"></a>查看暂存区和HEAD中的目录</h2><p>有什么办法能够查看工作区一样直观地查看暂存区和HEAD中的目录树吗？</p>
-<pre><code class="bash"># 查看HEAD目录树
-$ git ls-tree -l HEAD
-
-# 查看暂存区目录树
-$ git ls-files -s
-</code></pre>
-<p>小技巧：</p>
-<blockquote>
-<ol>
-<li>首先清除工作区当前的改动<br>$ git clean -fd</li>
-<li>用暂存区内容刷新工作区<br>$ git checkout .</li>
-</ol>
-</blockquote>
+        <h2 id="控制类"><a href="#控制类" class="headerlink" title="控制类"></a>控制类</h2><p><code>@RestController</code>:<br>用于返回json数据。<br>@RestController 是 @ResponseBody 和 @Controller的 组合注解。</p>
+<p><code>@Configuration</code>:<br>@Configuration标注在类上，相当于把该类作为spring的xml配置文件中的<beans>，作用为：配置spring容器(应用上下文)</beans></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
@@ -590,12 +498,12 @@ $ git ls-files -s
 
 
 <div class="article_copyright">
-    <p><span>文章标题:</span>Getting Started</p>
+    <p><span>文章标题:</span>Spring-boot 常用注解大全</p>
     
     <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
-    <p><span>发布时间:</span>2019-02-15, 21:01:28</p>
-    <p><span>最后更新:</span>2019-07-20, 04:57:18</p>
-    <span>原始链接:</span><a class="post-url" href="/2019-02-16-Getting-Started/" title="Getting Started">http://johncaijun.github.io/2019-02-16-Getting-Started/</a>
+    <p><span>发布时间:</span>2019-08-05, 23:05:30</p>
+    <p><span>最后更新:</span>2019-08-05, 11:21:01</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-08-06-Spring-boot-常用注解大全/" title="Spring-boot 常用注解大全">http://johncaijun.github.io/2019-08-06-Spring-boot-常用注解大全/</a>
     <p>
         <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
