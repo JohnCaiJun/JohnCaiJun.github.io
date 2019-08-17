@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>常用CSS大全 | Cai Jun&#39;s blog</title>
-  <meta name="keywords" content=" CSS ">
-  <meta name="description" content="常用CSS大全 | Cai Jun&#39;s blog">
+  <title>npm install 命令 | Cai Jun&#39;s blog</title>
+  <meta name="keywords" content=" NPM ">
+  <meta name="description" content="npm install 命令 | Cai Jun&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Personal web page">
 <meta name="keywords" content="caijun">
@@ -431,9 +431,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-常用CSS大全" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <article id="post-npm-install-命令" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-        <h1 class="article-title">常用CSS大全</h1>
+        <h1 class="article-title">npm install 命令</h1>
     
     <div class="article-meta">
         
@@ -448,14 +448,14 @@
         
         <span class="tag">
             
-            <a href="javascript:" class="color4">CSS</a>
+            <a href="javascript:" class="color4">NPM</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-08-16 13:13:35">2019-08-06 23:46</time>
+        创建时间:<time class="date" title="更新时间: 2019-08-17 03:12:34">2019-08-17 15:06</time>
         
     </div>
     <div class="article-meta">
@@ -477,7 +477,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#登录框"><span class="toc-text">登录框</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#npm-install-命令"><span class="toc-text">npm install 命令</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -492,27 +492,47 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="登录框"><a href="#登录框" class="headerlink" title="登录框"></a>登录框</h2><p>el-form class=”login-container”<br>h3 class=”login_title”<br>el-checkbox class=”login_remember”</p>
-<pre><code class="css">.login-container {
-    border-radius: 15px;            # 圆角边的像素
-    background-clip: padding-box;   # 背景裁剪
-    margin: 180px auto;             # 外边距：180像素，auto自动居中
-    width: 350px;
-    padding: 35px 35px 15px 35px;    # 内边距：上、下、左、右
-    background: #fff;
-    border: 1px solid #eaeaea;       # 边框：像素、实体线、颜色
-    box-shadow: 0 0 25px #cac6c6;    # 边框阴影： 隐形像素，颜色
-  }  
-.login_title {
-    margin: 0px auto 40px auto;
-    text-align: center;
-    color: #505458;
-  }
-.login_remember {
-    margin: 0px 0px 35px 0px;
-    text-align: left;
-  }
+        <h1 id="npm-install-命令"><a href="#npm-install-命令" class="headerlink" title="npm install 命令"></a>npm install 命令</h1><p>我们在使用 npm install 安装模块的模块的时候 ，一般会使用下面这几种命令形式：</p>
+<p>安装模块到项目目录下</p>
+<pre><code class="bash">npm install moduleName 
 </code></pre>
+<p>-g 的意思是将模块安装到全局，具体安装到磁盘哪个位置，要看 npm config prefix 的位置</p>
+<pre><code class="bash">npm install -g moduleName 
+</code></pre>
+<p>-save 的意思是将模块安装到项目目录下，并在package文件的dependencies节点写入依赖</p>
+<pre><code class="bash">npm install -save moduleName 
+</code></pre>
+<p>-save-dev 的意思是将模块安装到项目目录下，并在package文件的devDependencies节点写入依赖</p>
+<pre><code class="bash">npm install -save-dev moduleName 
+</code></pre>
+<p>那么问题来了，在项目中我们应该使用四个命令中的哪个呢？这个就要视情况而定了。下面对这四个命令进行对比，看完后你就不再这么问了。</p>
+<p>npm install moduleName 命令</p>
+<ol>
+<li>安装模块到项目node_modules目录下。</li>
+<li>不会将模块依赖写入devDependencies或dependencies 节点。</li>
+<li>运行 npm install 初始化项目时不会下载模块。</li>
+</ol>
+<p>npm install -g moduleName 命令</p>
+<ol>
+<li>安装模块到全局，不会在项目node_modules目录中保存模块包。</li>
+<li>不会将模块依赖写入devDependencies或dependencies 节点。</li>
+<li>运行 npm install 初始化项目时不会下载模块。</li>
+</ol>
+<p>npm install -save moduleName 命令</p>
+<ol>
+<li>安装模块到项目node_modules目录下。</li>
+<li>会将模块依赖写入dependencies 节点。</li>
+<li>运行 npm install 初始化项目时，会将模块下载到项目目录下。</li>
+<li>运行npm install –production或者注明NODE_ENV变量值为production时，会自动下载模块到node_modules目录中。</li>
+</ol>
+<p>npm install -save-dev moduleName 命令</p>
+<ol>
+<li>安装模块到项目node_modules目录下。</li>
+<li>会将模块依赖写入devDependencies 节点。</li>
+<li>运行 npm install 初始化项目时，会将模块下载到项目目录下。</li>
+<li>运行npm install –production或者注明NODE_ENV变量值为production时，不会自动下载模块到node_modules目录中。</li>
+</ol>
+<p>总结<br>devDependencies 节点下的模块是我们在开发时需要用的，比如项目中使用的 gulp ，压缩css、js的模块。这些模块在我们的项目部署后是不需要的，所以我们可以使用 -save-dev 的形式安装。像 express 这些模块是项目运行必备的，应该安装在 dependencies 节点下，所以我们应该使用 -save 的形式安装。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 876208453@qq.com </span>
@@ -526,12 +546,12 @@
 
 
 <div class="article_copyright">
-    <p><span>文章标题:</span>常用CSS大全</p>
+    <p><span>文章标题:</span>npm install 命令</p>
     
     <p><span>本文作者:</span><a href="javascript:void(0)" title="Cai Jun">Cai Jun</a></p>
-    <p><span>发布时间:</span>2019-08-06, 23:46:52</p>
-    <p><span>最后更新:</span>2019-08-16, 13:13:35</p>
-    <span>原始链接:</span><a class="post-url" href="/2019-08-07-常用CSS大全/" title="常用CSS大全">http://johncaijun.github.io/2019-08-07-常用CSS大全/</a>
+    <p><span>发布时间:</span>2019-08-17, 15:06:21</p>
+    <p><span>最后更新:</span>2019-08-17, 03:12:34</p>
+    <span>原始链接:</span><a class="post-url" href="/2019-08-18-npm-install-命令/" title="npm install 命令">http://johncaijun.github.io/2019-08-18-npm-install-命令/</a>
     <p>
         <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
